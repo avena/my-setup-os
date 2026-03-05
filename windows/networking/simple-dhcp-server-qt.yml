@@ -1,0 +1,66 @@
+# Simple DHCP Server Configuration
+# Project: https://github.com/niccokunzmann/simple_dhcp_server
+# 
+# Configuracao do Servidor DHCP para rede 192.168.50.0/24
+# Compativel com Windows ICS (Internet Connection Sharing)
+#
+# Uso:
+# 1. Copie este arquivo para a pasta do simple-dhcp-server-qt
+# 2. Ajuste bind_address para o IP da sua interface Ethernet
+# 3. Execute o servidor
+# 4. Os clientes conectados receberao IPs entre 192.168.50.5 e 192.168.50.250
+
+########### Timings ###########
+# Time in seconds before sending DHCP OFFER
+# Tempo em segundos antes de enviar DHCP OFFER
+dhcp_offer_after_seconds: 10
+
+# Time in seconds before sending DHCP ACK
+# Tempo em segundos antes de enviar DHCP ACK
+dhcp_acknowledge_after_seconds: 10
+
+########### Network ###########
+# Network address
+# Endereco de rede
+network: '192.168.50.0'
+
+# Subnet mask
+# Mascara de sub-rede
+subnet_mask: '255.255.255.0'
+
+# Router/Gateway address
+# Endereco do roteador/gateway
+# No Windows ICS, o proprio Windows atua como gateway
+router:
+  - '192.168.50.1'
+
+# DNS server addresses
+# Enderecos dos servidores DNS
+# O cliente usara na ordem listada (fallback automatico)
+domain_name_server:
+  - '192.168.50.1'   # Primario: Windows ICS (Gateway)
+  - '8.8.8.8'         # Secundario: Google DNS
+  - '8.8.4.4'         # Terciario: Google DNS Backup
+  - '1.1.1.1'         # Quaternario: Cloudflare DNS
+
+# IP address lease time in seconds
+# Tempo de concessao de IP em segundos
+# 43200 = 12 horas | 86400 = 24 horas
+ip_address_lease_time: 43200
+
+# Broadcast address for the network
+# Endereco de broadcast da rede
+broadcast_address: '192.168.50.255'
+
+# Interface to listen on
+# Interface para escutar as requisicoes DHCP
+# IMPORTANTE: Use o IP da interface Ethernet, nao da Wi-Fi
+# Isso evita que o servidor DHCP responda na rede errada
+bind_address: '192.168.50.1'
+
+# Observacoes:
+# - A faixa de IPs distribuidos e automaticamente .5 a .250 (246 enderecos)
+# - O arquivo hosts.csv e criado automaticamente para registrar dispositivos
+# - Para reiniciar as concessoes, delete o arquivo hosts.csv
+# - Este servidor pode conflitar com o DHCP nativo do Windows ICS
+# - Se houver problemas, verifique se apenas um servidor DHCP esta ativo na rede
