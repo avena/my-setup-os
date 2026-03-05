@@ -1,0 +1,11 @@
+[user]
+	email = fernando.avena@gmail.com
+	name = Fernando Avena
+[credential]
+	helper = cache --timeout=300
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

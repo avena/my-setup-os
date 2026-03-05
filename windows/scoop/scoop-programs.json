@@ -1,0 +1,269 @@
+{
+    "apps": [
+        {
+            "Source": "main",
+            "Version": "26.00",
+            "Info": "",
+            "Updated": "2026-02-21T21:37:32.5078577-03:00",
+            "Name": "7zip"
+        },
+        {
+            "Source": "extras",
+            "Version": "1.19.6",
+            "Info": "",
+            "Updated": "2026-02-28T14:33:51.9965563-03:00",
+            "Name": "antigravity"
+        },
+        {
+            "Source": "extras",
+            "Version": "9.6.1",
+            "Info": "",
+            "Updated": "2026-02-21T21:48:18.9441585-03:00",
+            "Name": "anydesk"
+        },
+        {
+            "Source": "main",
+            "Version": "1.37.0-1",
+            "Info": "",
+            "Updated": "2026-02-21T21:40:20.853273-03:00",
+            "Name": "aria2"
+        },
+        {
+            "Source": "nerd-fonts",
+            "Version": "2407.24",
+            "Info": "",
+            "Updated": "2026-02-22T15:44:52.5736871-03:00",
+            "Name": "Cascadia-Code"
+        },
+        {
+            "Source": "nerd-fonts",
+            "Version": "3.4.0",
+            "Info": "",
+            "Updated": "2026-02-22T15:45:33.6841106-03:00",
+            "Name": "CascadiaCode-NF"
+        },
+        {
+            "Source": "extras",
+            "Version": "2.6.11",
+            "Info": "",
+            "Updated": "2026-03-04T10:14:57.8710333-03:00",
+            "Name": "cursor"
+        },
+        {
+            "Source": "main",
+            "Version": "3.14.1",
+            "Info": "",
+            "Updated": "2026-02-23T09:52:11.3227329-03:00",
+            "Name": "dark"
+        },
+        {
+            "Source": "main",
+            "Version": "2.7.3",
+            "Info": "",
+            "Updated": "2026-03-04T15:14:54.363652-03:00",
+            "Name": "deno"
+        },
+        {
+            "Source": "main",
+            "Version": "10.0.103",
+            "Info": "",
+            "Updated": "2026-02-23T14:22:03.9180771-03:00",
+            "Name": "dotnet-sdk"
+        },
+        {
+            "Source": "main",
+            "Version": "8.0.1",
+            "Info": "",
+            "Updated": "2026-02-23T10:46:17.9882865-03:00",
+            "Name": "ffmpeg"
+        },
+        {
+            "Source": "nerd-fonts",
+            "Version": "6.2",
+            "Info": "",
+            "Updated": "2026-02-22T15:44:23.8723733-03:00",
+            "Name": "firacode"
+        },
+        {
+            "Source": "nerd-fonts",
+            "Version": "3.4.0",
+            "Info": "",
+            "Updated": "2026-02-22T15:44:58.5609267-03:00",
+            "Name": "FiraCode-NF"
+        },
+        {
+            "Source": "main",
+            "Version": "2.53.0",
+            "Info": "",
+            "Updated": "2026-02-21T21:38:08.5658969-03:00",
+            "Name": "git"
+        },
+        {
+            "Source": "main",
+            "Version": "0.10.0",
+            "Info": "",
+            "Updated": "2026-02-23T14:17:52.3546509-03:00",
+            "Name": "git-branchless"
+        },
+        {
+            "Source": "main",
+            "Version": "0.10.1",
+            "Info": "",
+            "Updated": "2026-02-23T14:18:24.5068213-03:00",
+            "Name": "git-bug"
+        },
+        {
+            "Source": "main",
+            "Version": "2.47.0",
+            "Info": "",
+            "Updated": "2026-02-23T14:18:28.0411553-03:00",
+            "Name": "git-filter-repo"
+        },
+        {
+            "Source": "main",
+            "Version": "0.3.174",
+            "Info": "",
+            "Updated": "2026-02-23T14:22:19.9367367-03:00",
+            "Name": "git-istage"
+        },
+        {
+            "Source": null,
+            "Version": null,
+            "Info": "Install failed",
+            "Updated": "2026-02-21T21:41:04.6913377-03:00",
+            "Name": "innounp"
+        },
+        {
+            "Source": "nerd-fonts",
+            "Version": "2.304",
+            "Info": "",
+            "Updated": "2026-02-22T16:01:25.5671585-03:00",
+            "Name": "JetBrains-Mono"
+        },
+        {
+            "Source": "nerd-fonts",
+            "Version": "3.4.0",
+            "Info": "",
+            "Updated": "2026-02-22T15:45:23.9932638-03:00",
+            "Name": "JetBrainsMono-NF"
+        },
+        {
+            "Source": "main",
+            "Version": "1.46.0",
+            "Info": "",
+            "Updated": "2026-02-25T17:45:28.9927584-03:00",
+            "Name": "just"
+        },
+        {
+            "Source": "extras",
+            "Version": "2.61",
+            "Info": "",
+            "Updated": "2026-03-04T15:19:29.3971921-03:00",
+            "Name": "keepass"
+        },
+        {
+            "Source": "extras",
+            "Version": "2.0.2",
+            "Info": "",
+            "Updated": "2026-02-21T21:56:03.3495059-03:00",
+            "Name": "keepass-plugin-keepassrpc"
+        },
+        {
+            "Source": "main",
+            "Version": "25.8.0",
+            "Info": "",
+            "Updated": "2026-03-04T09:54:58.7932629-03:00",
+            "Name": "nodejs"
+        },
+        {
+            "Source": "extras",
+            "Version": "7.7.0",
+            "Info": "",
+            "Updated": "2026-03-04T10:20:55.7777448-03:00",
+            "Name": "notion"
+        },
+        {
+            "Source": "extras",
+            "Version": "12.0.4",
+            "Info": "",
+            "Updated": "2026-03-04T20:57:45.2601086-03:00",
+            "Name": "postman"
+        },
+        {
+            "Source": null,
+            "Version": null,
+            "Info": "Install failed",
+            "Updated": "2026-02-23T17:33:09.9641758-03:00",
+            "Name": "powertoys"
+        },
+        {
+            "Source": "main",
+            "Version": "3.14.3",
+            "Info": "",
+            "Updated": "2026-02-23T09:53:38.7452148-03:00",
+            "Name": "python"
+        },
+        {
+            "Source": "main",
+            "Version": "2.1.0",
+            "Info": "",
+            "Updated": "2026-02-21T21:41:32.3498995-03:00",
+            "Name": "scoop-search"
+        },
+        {
+            "Source": "extras",
+            "Version": "2.3.11009",
+            "Info": "",
+            "Updated": "2026-03-04T10:18:58.8326749-03:00",
+            "Name": "trae"
+        },
+        {
+            "Source": "extras",
+            "Version": "3.3.7",
+            "Info": "",
+            "Updated": "2026-02-21T21:39:29.1627516-03:00",
+            "Name": "unigetui"
+        },
+        {
+            "Source": "extras",
+            "Version": "3.0.23",
+            "Info": "",
+            "Updated": "2026-02-21T21:48:08.3228861-03:00",
+            "Name": "vlc"
+        },
+        {
+            "Source": "extras",
+            "Version": "1.110.0",
+            "Info": "",
+            "Updated": "2026-03-04T21:06:44.2803287-03:00",
+            "Name": "vscode"
+        },
+        {
+            "Source": "main",
+            "Version": "2026.03.03",
+            "Info": "",
+            "Updated": "2026-03-04T10:01:00.4809785-03:00",
+            "Name": "yt-dlp"
+        }
+    ],
+    "buckets": [
+        {
+            "Name": "main",
+            "Source": "https://github.com/ScoopInstaller/Main",
+            "Updated": "2026-03-04T17:31:20-03:00",
+            "Manifests": 1454
+        },
+        {
+            "Name": "extras",
+            "Source": "https://github.com/ScoopInstaller/Extras",
+            "Updated": "2026-03-04T17:31:41-03:00",
+            "Manifests": 2275
+        },
+        {
+            "Name": "nerd-fonts",
+            "Source": "https://github.com/matthewjberger/scoop-nerd-fonts",
+            "Updated": "2026-03-03T07:49:16-03:00",
+            "Manifests": 367
+        }
+    ]
+}
