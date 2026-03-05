@@ -1,4 +1,4 @@
-# meu-setup-os
+# my-setup-os
 
 ## Overview
 Este repositório contém a configuração personalizada para meu ambiente de trabalho **cross-platform**, suportando:
@@ -18,9 +18,10 @@ A organização segue o conceito de **"terreno e veículos"**:
 ## Estrutura do Repositório
 
 ```text
-meu-setup-os/
+my-setup-os/
 ├── README.md                          # Este arquivo - Introdução ao projeto
 ├── docs/                              # Documentation and references
+│   ├── fonts.md                       # Instalação de fontes para editores e terminais
 │   └── references/                    # Curated references for dotfiles management
 │       └── README.md                  # Guide to dotfiles resources and best practices
 ├── shared/                            # Configurações cross-platform
@@ -28,15 +29,23 @@ meu-setup-os/
 │   └── README.md                      # Explicação das configurações compartilhadas
 │
 ├── windows/                           # Configurações específicas do Windows Host
+│   ├── fonts/                         # Instalação de fontes para Windows
+│   │   ├── install-fonts.ps1          # Instalação via Scoop
+│   │   └── README.md                  # Explicação da instalação de fontes
 │   ├── networking/                    # Scripts PowerShell para NAT e DHCP
 │   │   ├── *.ps1                      # Scripts de configuração de rede
 │   │   ├── simple-dhcp-server-qt.yml  # Configuração do DHCP Server
 │   │   └── README.md                  # Explicação dos scripts de rede
-│   └── scoop/                         # Gerenciador de pacotes Scoop
-│       ├── scoop-programs.json        # Lista de programas instalados
-│       └── README.md                  # Instruções do Scoop e UnigetiUI
+│   ├── scoop/                         # Gerenciador de pacotes Scoop
+│   │   ├── scoop-programs.json        # Lista de programas instalados
+│   │   └── README.md                  # Instruções do Scoop e UnigetiUI
+│   ├── Set-PowerShell7AsDefault.ps1   # Configura PowerShell 7 como padrão
+│   └── README.md                      # Overview das configurações Windows
 │
 └── linux/                            # Configurações para Linux (WSL ou Nativo)
+    ├── fonts/                         # Instalação de fontes para Linux/macOS
+    │   ├── install-fonts.sh           # Instalação via apt/dnf/pacman/Homebrew
+    │   └── README.md                  # Explicação da instalação de fontes
     ├── system/                        # Configurações de sistema
     │   ├── .bashrc                   # Configuração do shell Bash
     │   ├── .tmux.conf                # Configuração do Tmux
@@ -74,7 +83,7 @@ meu-setup-os/
 
 ### Pré-requisitos
 - Git instalado em todos os sistemas
-- PowerShell 5.1+ (Windows)
+- PowerShell 7+ (Windows) - recomendado (use `Set-PowerShell7AsDefault.ps1` para configurar)
 - WSL 2 (se usar Windows)
 - Bash/Zsh (Linux/WSL)
 
@@ -82,8 +91,8 @@ meu-setup-os/
 
 1. **Clonar o Repositório**
    ```bash
-   git clone https://github.com/seu-usuario/meu-setup-os.git
-   cd meu-setup-os
+   git clone https://github.com/avena/my-setup-os.git
+   cd my-setup-os
    ```
 
 2. **Configurar Links Simbólicos**
@@ -116,6 +125,8 @@ meu-setup-os/
 - **Scoop**: Gerenciador de pacotes (instalação via `windows/scoop/README.md`)
 - **Rede**: Scripts PowerShell para NAT e DHCP (via `windows/networking/README.md`)
 - **WSL**: Configuração do WSL 2 (via `linux/system/README.md`)
+- **Fontes**: Instalação de fontes via `windows/fonts/install-fonts.ps1`
+- **PowerShell 7**: Configuração como padrão via `windows/Set-PowerShell7AsDefault.ps1`
 
 ### WSL 2
 - **Docker**: Instalação via `linux/containers/install-docker-wsl.sh`
@@ -167,4 +178,3 @@ O diretório docs/references/ contém uma coleção curada de referências e ins
 - **Docker**: Plataforma de contêineres
 - **Tmux**: Terminal multiplexer
 - **WSL**: Windows Subsystem for Linux
-
