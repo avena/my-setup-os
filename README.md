@@ -20,6 +20,9 @@ A organização segue o conceito de **"terreno e veículos"**:
 ```text
 meu-setup-os/
 ├── README.md                          # Este arquivo - Introdução ao projeto
+├── docs/                              # Documentation and references
+│   └── references/                    # Curated references for dotfiles management
+│       └── README.md                  # Guide to dotfiles resources and best practices
 ├── shared/                            # Configurações cross-platform
 │   ├── .gitconfig                     # Configuração do Git (valida para todos)
 │   └── README.md                      # Explicação das configurações compartilhadas
@@ -148,6 +151,15 @@ Verifique se os links simbólicos estão corretos e o arquivo `.wslconfig` exist
 ## Licença
 
 MIT License - Veja `LICENSE` para mais detalhes.
+
+## Recursos e Referências
+
+O diretório docs/references/ contém uma coleção curada de referências e inspiração para gerenciamento de dotfiles, incluindo:
+
+- Repositórios famosos de dotfiles (mathiasbynens, holman, paulirish, jessfraz)
+- Ferramentas de gerenciamento (chezmoi, nixos-config)
+- Configurações para terminal e shell (gpakosz/.tmux)
+- Melhores práticas e exemplos
 
 ## Agradecimentos
 
