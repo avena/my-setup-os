@@ -129,15 +129,15 @@ my-setup-os/
 - **PowerShell 7**: Configuração como padrão via `windows/Set-PowerShell7AsDefault.ps1`
 
 ### WSL 2
-- **Docker**: Instalação via `linux/containers/install-docker-wsl.sh`
-- **Shell**: Configuração Bash/Tmux via `linux/system/README.md`
-- **Pacotes**: Instalação via `linux/packages/README.md`
-
+- **Homebrew**: Gerenciador de pacotes adicional (via `linux/homebrew/README.md`)
+- **apt/dnf**: Gerenciadores de pacotes do sistema (via `linux/packages/README.md`)
+- **Docker**: Instala��o via `linux/containers/install-docker-wsl.sh`
+- **Shell**: Configura��o Bash/Tmux via `linux/system/README.md`
 ### Linux Nativo
-- **Docker**: Instalação via `linux/containers/install-docker-wsl.sh` (adaptado)
-- **Shell**: Configuração Bash/Tmux via `linux/system/README.md`
-- **Pacotes**: Instalação via `linux/packages/README.md`
-
+- **Homebrew**: Gerenciador de pacotes adicional (via `linux/homebrew/README.md`)
+- **apt/dnf**: Gerenciadores de pacotes do sistema (via `linux/packages/README.md`)
+- **Docker**: Instala��o via `linux/containers/install-docker-wsl.sh` (adaptado)
+- **Shell**: Configura��o Bash/Tmux via `linux/system/README.md`
 ## Solução de Problemas
 
 ### 1. Links Simbólicos Não Funcionam

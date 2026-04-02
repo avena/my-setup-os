@@ -5,6 +5,25 @@ Esta pasta contém scripts e listas de pacotes para gerenciamento de dependênci
 
 ## Package Managers Suportados
 
+### Homebrew (Opcional)
+O Homebrew está disponível como mais uma opção de gerenciador de pacotes para Linux/WSL.
+
+**Vantagens:**
+- Cross-platform: Mesma ferramenta no macOS e Linux
+- Declarativo: Brewfile permite versionamento e reprodução exata
+- Isolamento: Pacotes instalados em `/home/linuxbrew` não conflitam com o sistema
+- Atualizações fáceis: `brew upgrade` atualiza tudo de uma vez
+
+**Instalação:**
+```bash
+cd ../homebrew/
+./install-homebrew.sh
+./install-brew-packages.sh
+```
+
+**Brewfile:**
+O arquivo `Brewfile` contém a lista declarativa de pacotes para instalação via Homebrew.
+
 ### Debian/Ubuntu (apt)
 - Arquivo `packages.apt` com lista de pacotes
 - Script `install-apt-packages.sh` para instalação
@@ -41,6 +60,13 @@ jq
 ### Pré-requisitos
 - Acesso a repositórios (apt/dnf)
 - Permissões de sudo
+
+### Homebrew
+```bash
+cd ../homebrew/
+./install-homebrew.sh
+./install-brew-packages.sh
+```
 
 ### Debian/Ubuntu
 ```bash
@@ -92,6 +118,9 @@ chmod +x install-snap-packages.sh
 
 ### Atualizar Lista de Pacotes
 ```bash
+# Homebrew
+brew update
+
 # Debian/Ubuntu
 sudo apt update
 
@@ -101,6 +130,9 @@ sudo dnf update
 
 ### Instalar Pacote Individual
 ```bash
+# Homebrew
+brew install nome-do-pacote
+
 # Debian/Ubuntu
 sudo apt install nome-do-pacote
 
@@ -110,6 +142,9 @@ sudo dnf install nome-do-pacote
 
 ### Remover Pacote
 ```bash
+# Homebrew
+brew uninstall nome-do-pacote
+
 # Debian/Ubuntu
 sudo apt remove nome-do-pacote
 sudo apt autoremove
@@ -121,6 +156,9 @@ sudo dnf autoremove
 
 ### Atualizar Todos os Pacotes
 ```bash
+# Homebrew
+brew upgrade
+
 # Debian/Ubuntu
 sudo apt upgrade
 
@@ -177,10 +215,16 @@ Verifique se você está usando sudo.
 2. Verifique se o repositório está habilitado
 3. Atualize a lista de pacotes:
    ```bash
-   sudo apt update  # Debian/Ubuntu
-   sudo dnf update  # Fedora
+   brew update              # Homebrew
+   sudo apt update          # Debian/Ubuntu
+   sudo dnf update          # Fedora
    ```
 
 ### Conexão Falha
 Verifique a conectividade com a internet e os repositórios.
 
+### Homebrew Não Encontrado
+Execute para carregar o PATH:
+```bash
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+```
