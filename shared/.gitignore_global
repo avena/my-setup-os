@@ -1,0 +1,41 @@
+# Arquivos temporários
+*.tmp
+*.temp
+*.swp
+*.log
+
+# Sistemas operacionais
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs e Editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+venv/
+.venv/
+
+# Node.js
+node_modules/
+
+# Docker
+*.pid
+
+# Git
+.gitconfig-work
+.gitconfig-personal
+
+# Containers
+*.pid
+.secrets

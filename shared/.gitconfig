@@ -1,6 +1,6 @@
 [user]
-	email = fernando.avena@gmail.com
-	name = Fernando Avena
+	email = SEU_EMAIL_AQUI
+	name = SEU_NOME_AQUI
 [credential]
 	helper = cache --timeout=300
 [credential "https://github.com"]

@@ -120,8 +120,7 @@ fi
 cd ~
 
 # opencode
-export PATH=/home/livre/.opencode/bin:$PATH
 export PATH="$HOME/.opencode/bin:$PATH"
 
 # kilo
-export PATH=/home/livre/.kilo/bin:$PATH
+export PATH="$HOME/.kilo/bin:$PATH"
