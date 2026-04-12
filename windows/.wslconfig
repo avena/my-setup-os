@@ -1,0 +1,13 @@
+[wsl2]
+# usa mesma rede do Windows (mais estável, sem vEthernet clássico)
+# networkingMode=mirrored
+networkingMode=nat
+dnsTunneling=true
+firewall=true
+autoProxy=true
+
+# limita memória para não engessar o Windows
+memory=8GB
+processors=4
+
+swap=4GB

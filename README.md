@@ -22,10 +22,11 @@ my-setup-os/
 ├── README.md                          # Este arquivo - Introdução ao projeto
 ├── docs/                              # Documentation and references
 │   ├── fonts.md                       # Instalação de fontes para editores e terminais
+│   ├── top-clis.md                    # Catálogo de 26 CLIs de IA/Coding: instalação e uso
 │   └── references/                    # Curated references for dotfiles management
 │       └── README.md                  # Guide to dotfiles resources and best practices
 ├── shared/                            # Configurações cross-platform
-│   ├── .gitconfig                     # Configuração do Git (valida para todos)
+│   └── .gitconfig                     # Configuração do Git (valida para todos)
 │   └── README.md                      # Explicação das configurações compartilhadas
 │
 ├── windows/                           # Configurações específicas do Windows Host
@@ -42,19 +43,23 @@ my-setup-os/
 │   ├── Set-PowerShell7AsDefault.ps1   # Configura PowerShell 7 como padrão
 │   └── README.md                      # Overview das configurações Windows
 │
-└── linux/                            # Configurações para Linux (WSL ou Nativo)
+└── linux/                             # Configurações para Linux (WSL ou Nativo)
+    ├── cli/                           # Top CLIs Installer (26 CLIs IA/Coding)
+    │   ├── top-clis-installer.sh      # Bootstrap: gera ~/top-clis.sh e executa
+    │   ├── top-clis.sh                # Script principal do catálogo interativo
+    │   └── README.md                  # Documentação do Top CLIs
     ├── fonts/                         # Instalação de fontes para Linux/macOS
     │   ├── install-fonts.sh           # Instalação via apt/dnf/pacman/Homebrew
     │   └── README.md                  # Explicação da instalação de fontes
     ├── system/                        # Configurações de sistema
-    │   ├── .bashrc                   # Configuração do shell Bash
-    │   ├── .tmux.conf                # Configuração do Tmux
-    │   └── README.md                 # Explicação das configurações de sistema
-    ├── containers/                   # Docker e containerização
-    │   ├── install-docker-wsl*.sh    # Scripts de instalação do Docker
-    │   └── README.md                 # Instruções do Docker
-    └── packages/                     # Gerenciamento de pacotes
-        └── README.md                 # Instruções de instalação de pacotes
+    │   ├── .bashrc                    # Configuração do shell Bash
+    │   ├── .tmux.conf                 # Configuração do Tmux
+    │   └── README.md                  # Explicação das configurações de sistema
+    ├── containers/                    # Docker e containerização
+    │   ├── install-docker-wsl*.sh     # Scripts de instalação do Docker
+    │   └── README.md                  # Instruções do Docker
+    └── packages/                      # Gerenciamento de pacotes
+        └── README.md                  # Instruções de instalação de pacotes
 ```
 
 ## Características Principais
@@ -129,14 +134,16 @@ my-setup-os/
 - **PowerShell 7**: Configuração como padrão via `windows/Set-PowerShell7AsDefault.ps1`
 
 ### WSL 2
+- **Homebrew**: Gerenciador de pacotes adicional (via `linux/homebrew/README.md`)
+- **apt/dnf**: Gerenciadores de pacotes do sistema (via `linux/packages/README.md`)
 - **Docker**: Instalação via `linux/containers/install-docker-wsl.sh`
 - **Shell**: Configuração Bash/Tmux via `linux/system/README.md`
-- **Pacotes**: Instalação via `linux/packages/README.md`
 
 ### Linux Nativo
+- **Homebrew**: Gerenciador de pacotes adicional (via `linux/homebrew/README.md`)
+- **apt/dnf**: Gerenciadores de pacotes do sistema (via `linux/packages/README.md`)
 - **Docker**: Instalação via `linux/containers/install-docker-wsl.sh` (adaptado)
 - **Shell**: Configuração Bash/Tmux via `linux/system/README.md`
-- **Pacotes**: Instalação via `linux/packages/README.md`
 
 ## Solução de Problemas
 
@@ -165,12 +172,11 @@ MIT License - Veja `LICENSE` para mais detalhes.
 
 ## Recursos e Referências
 
-O diretório docs/references/ contém uma coleção curada de referências e inspiração para gerenciamento de dotfiles, incluindo:
+O diretório `docs/` contém documentação completa do projeto:
 
-- Repositórios famosos de dotfiles (mathiasbynens, holman, paulirish, jessfraz)
-- Ferramentas de gerenciamento (chezmoi, nixos-config)
-- Configurações para terminal e shell (gpakosz/.tmux)
-- Melhores práticas e exemplos
+- **[top-clis.md](docs/top-clis.md)** - Catálogo de 26 CLIs de IA/Coding: instalação, uso e solução de problemas
+- **[fonts.md](docs/fonts.md)** - Instalação de fontes para editores e terminais
+- **[references/](docs/references/README.md)** - Coleção curada de referências e inspiração para gerenciamento de dotfiles, incluindo repositórios famosos, ferramentas e melhores práticas.
 
 ## Agradecimentos
 

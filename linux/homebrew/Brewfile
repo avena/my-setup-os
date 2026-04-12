@@ -1,0 +1,76 @@
+# Homebrew Brewfile - my-setup-os
+# Lista declarativa de pacotes para Linux/WSL
+
+# Core utilities
+brew "curl"
+brew "wget"
+brew "htop"
+brew "tree"
+brew "jq"
+
+# Development tools
+brew "git"
+brew "node"
+brew "python@3.14"
+brew "gcc"
+brew "ripgrep"
+
+# Terminal tools
+brew "tmux"
+brew "vim"
+brew "nano"
+
+# Custom tools (from user's list)
+brew "kilo"
+brew "gemini-cli"
+brew "opencode"
+brew "micasa"
+
+# Libraries and dependencies
+brew "openssl@3"
+brew "readline"
+brew "sqlite"
+brew "xz"
+brew "zstd"
+brew "bzip2"
+brew "lz4"
+brew "expat"
+brew "pcre2"
+brew "gmp"
+brew "mpfr"
+brew "libmpc"
+brew "isl"
+brew "zlib-ng-compat"
+brew "brotli"
+brew "fmt"
+brew "icu4c@78"
+brew "ca-certificates"
+
+# Network libraries
+brew "libnghttp2"
+brew "libnghttp3"
+brew "libngtcp2"
+brew "c-ares"
+brew "ada-url"
+brew "simdjson"
+brew "llhttp"
+brew "hdrhistogram_c"
+
+# X11 libraries
+brew "libx11"
+brew "libxau"
+brew "libxdmcp"
+brew "libxcb"
+brew "xorgproto"
+
+# Other utilities
+brew "binutils"
+brew "unzip"
+brew "xsel"
+brew "ncurses"
+brew "libedit"
+brew "libffi"
+brew "libuv"
+brew "uvwasi"
+brew "mpdecimal"
+brew "berkeley-db@5"

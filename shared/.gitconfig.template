@@ -1,0 +1,89 @@
+# .gitconfig.template
+# Copie este arquivo para shared/.gitconfig e personalize com seus dados:
+#   cp shared/.gitconfig.template shared/.gitconfig
+#
+# Ou configure via variáveis de ambiente e preencha os placeholders:
+#   sed "s/\${GIT_USER_NAME}/Seu Nome/;s/\${GIT_USER_EMAIL}/seu@email.com/" shared/.gitconfig.template > shared/.gitconfig
+
+[user]
+	email = ${GIT_USER_EMAIL}
+	name = ${GIT_USER_NAME}
+
+[credential]
+	helper = cache --timeout=3600
+
+[credential "https://github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+
+# ==========================================
+# Core Settings
+# ==========================================
+[core]
+	autocrlf = input
+	excludesfile = ~/.gitignore_global
+	editor = nvim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+
+# ==========================================
+# Aliases
+# ==========================================
+[alias]
+	st = status -sb
+	ci = commit
+	co = checkout
+	br = branch
+	df = diff
+	lg = log --oneline --graph --all --decorate
+	ll = log --stat
+	last = log -1 HEAD --stat
+ amend = commit --amend --no-edit
+	aliases = config --get-regexp ^alias\\.
+	ignored = ls-files -o -i --exclude-standard
+
+# ==========================================
+# Pull/Push
+# ==========================================
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[pull]
+	rebase = true
+
+# ==========================================
+# Diff & Merge
+# ==========================================
+[merge]
+	conflictstyle = zdiff3
+	tool = vscode
+	guitool = vscode
+
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+
+[diff]
+	colorMoved = zebra
+	algorithm = histogram
+
+# ==========================================
+# GPG/Signing
+# ==========================================
+[gpg]
+	format = ssh
+
+# ==========================================
+# Include (opcional — descomente se precisar)
+# ==========================================
+# [includeIf "gitdir:~/work/"]
+# 	path = ~/.gitconfig-work
+#
+# [includeIf "gitdir:~/personal/"]
+# 	path = ~/.gitconfig-personal
