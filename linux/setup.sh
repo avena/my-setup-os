@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 # Setup unificado para Linux/WSL
 # Instala e configura todo o ambiente automaticamente
-# Uso: ./setup.sh
+# Uso: ./setup.sh  (use bash, nao sh)
+
+# Garante que esta rodando em bash
+if [ -z "$BASH_VERSION" ]; then
+    echo "ERRO: este script requer bash. Use 'bash setup.sh', nao 'sh setup.sh'."
+    exit 1
+fi
 
 set -e
 
@@ -12,7 +18,8 @@ BLUE='\033[0;34m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
-REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 echo -e "${CYAN}====================================================${NC}"
 echo -e "${CYAN}  Setup Unificado - Linux/WSL                       ${NC}"
@@ -133,13 +140,13 @@ fi
 # 8. Configurar Git (se necessário)
 # ============================================================
 echo -e "\n${CYAN}--- 8. Configuração do Git ---${NC}"
-if grep -q "SEU_EMAIL_AQUI\|SEU_NOME_AQUI" "$HOME/.gitconfig" 2>/dev/null; then
+if grep -q "email = TODO\|name = TODO" "$HOME/.gitconfig" 2>/dev/null; then
     echo -e "${YELLOW}[WARN] Configure seu nome e e-mail em ~/.gitconfig${NC}"
     read -p "Nome (ex: Seu Nome): " git_name
     read -p "Email (ex: nome@email.com): " git_email
     if [[ -n "$git_name" ]] && [[ -n "$git_email" ]]; then
-        sed -i "s/SEU_NOME_AQUI/$git_name/" "$HOME/.gitconfig"
-        sed -i "s/SEU_EMAIL_AQUI/$git_email/" "$HOME/.gitconfig"
+        sed -i "s/name = TODO/name = $git_name/" "$HOME/.gitconfig"
+        sed -i "s/email = TODO/email = $git_email/" "$HOME/.gitconfig"
         echo -e "${GREEN}[OK] Git configurado!${NC}"
     else
         echo -e "${YELLOW}[INFO] Pule a configuração do git por enquanto.${NC}"
@@ -161,6 +168,22 @@ else
 fi
 
 # ============================================================
+# 10. Instalar CLIs de IA/Coding
+# ============================================================
+echo -e "\n${CYAN}--- 10. CLIs de IA/Coding (Top 26) ---${NC}"
+if [[ -f "$REPO_DIR/linux/cli/top-clis.sh" ]]; then
+    read -p "Deseja instalar CLIs de IA/Coding? (s/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Ss]$ ]]; then
+        echo "todos" | bash "$REPO_DIR/linux/cli/top-clis.sh"
+    else
+        echo -e "${YELLOW}[SKIP] CLIs de IA/Coding não instalados. Rode manualmente: ${GREEN}bash linux/cli/top-clis.sh${NC}"
+    fi
+else
+    echo -e "${YELLOW}[WARN] Script de CLIs não encontrado. Pulando.${NC}"
+fi
+
+# ============================================================
 # Finalização
 # ============================================================
 echo -e "\n${CYAN}====================================================${NC}"
@@ -172,4 +195,5 @@ echo -e "  1. Recarregue o shell:  ${GREEN}source ~/.bashrc${NC}"
 echo -e "  2. Instale plugins tmux:${GREEN}tmux${NC} → ${GREEN}prefix + I${NC}"
 echo -e "  3. Verifique docker:    ${GREEN}docker --version${NC}"
 echo -e "  4. Verifique git:       ${GREEN}git config --list${NC}"
+echo -e "  5. Verifique CLIs:      ${GREEN}bash linux/cli/top-clis.sh${NC} → ${GREEN}scan${NC}"
 echo -e ""
