@@ -126,6 +126,29 @@ export PATH="$HOME/.npm-global/bin:$PATH"
   sudo apt install -y ripgrep
   ```
 
+#### Aliases de Modelos OpenClaude
+
+O arquivo `linux/system/.bashrc` inclui aliases prontos para usar modelos específicos com OpenClaude:
+
+| Alias | Modelo |
+|---|---|
+| `oc-nemo` | `nvidia/nemotron-3-super-120b-a12b:free` |
+| `oc-trinity` | `arcee-ai/trinity-large-preview:free` |
+| `oc-minimax` | `minimax/minimax-m2.5:free` |
+| `oc-gptoss` | `openai/gpt-oss-120b:free` |
+| `oc-glm` | `z-ai/glm-4.5-air:free` |
+
+**Exemplo de uso:**
+```bash
+oc-nemo    # Inicia OpenClaude com Nemotron 3 Super
+oc-glm     # Inicia OpenClaude com GLM 4.5 Air
+```
+
+**Para adicionar mais aliases**, edite `~/.bashrc`:
+```bash
+alias oc-seu-alias='openclaude --model "provider/modelo:tag"'
+```
+
 ### ZAI CLI (#25) — Comunitário
 - **Não oficial** — projeto da comunidade, não da Z.ai
 - Requer configuração de API key
