@@ -124,3 +124,18 @@ export PATH="$HOME/.opencode/bin:$PATH"
 
 # kilo
 export PATH="$HOME/.kilo/bin:$PATH"
+
+# NVM (Node Version Manager)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Homebrew Linux
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+
+# OpenClaude model aliases
+alias oc-nemo='openclaude --model "nvidia/nemotron-3-super-120b-a12b:free"'
+alias oc-trinity='openclaude --model "arcee-ai/trinity-large-preview:free"'
+alias oc-minimax='openclaude --model "minimax/minimax-m2.5:free"'
+alias oc-gptoss='openclaude --model "openai/gpt-oss-120b:free"'
+alias oc-glm='openclaude --model "z-ai/glm-4.5-air:free"'
