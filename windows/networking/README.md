@@ -15,6 +15,12 @@ Esta pasta contém scripts PowerShell para gerenciamento de rede no Windows, esp
 - `nat-rede50-desktop.ps1`: Configuração NAT específica para desktop
 - `nat-rede50.ps1`: Configuração NAT básica para rede 50.x.x.x
 
+### Scripts de Portproxy (WSL2)
+- `portproxy.ps1`: Script principal de portproxy — detecta IP do WSL e cria regra de redirecionamento + firewall
+- `atualizar-ponte.ps1`: Atualiza rapidamente o portproxy quando o IP do WSL muda
+- `config-ssh-tunnel.ps1`: Configura túnel SSH via portproxy para máquina remota
+- `diagnostico-rede.ps1`: Diagnóstico completo da rede (IPs, NAT, portproxy, firewall, ping)
+
 ### Servidor DHCP
 - `simple-dhcp-server-qt.yml`: Configuração do servidor DHCP Simple DHCP Server
 - `url-programa.txt`: URL para download do Simple DHCP Server
