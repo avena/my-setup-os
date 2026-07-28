@@ -124,3 +124,16 @@ export PATH="$HOME/.opencode/bin:$PATH"
 
 # kilo
 export PATH="$HOME/.kilo/bin:$PATH"
+
+# NVM (Node Version Manager)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Homebrew Linux
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+
+export PATH="$HOME/.npm-global/bin:$PATH"
+export MESA_LOADER_DRIVER_OVERRIDE=d3d12
+export GALLIUM_DRIVER=d3d12
+alias obsidian='XCURSOR_SIZE=16 ELECTRON_OZONE_PLATFORM_HINT=x11 /usr/bin/obsidian'
