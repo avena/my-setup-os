@@ -137,3 +137,26 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 export MESA_LOADER_DRIVER_OVERRIDE=d3d12
 export GALLIUM_DRIVER=d3d12
 alias obsidian='XCURSOR_SIZE=16 ELECTRON_OZONE_PLATFORM_HINT=x11 /usr/bin/obsidian'
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/livre/.local/bin:$PATH"
+
+# QODER_DISPATCHER_PATH v1
+_qoder_dispatcher_entry="$HOME/.qoder/entry"
+_qoder_dispatcher_rest=${PATH-}
+_qoder_dispatcher_tail=
+while :; do
+  case $_qoder_dispatcher_rest in
+    *:*) _qoder_dispatcher_part=${_qoder_dispatcher_rest%%:*}; _qoder_dispatcher_rest=${_qoder_dispatcher_rest#*:}; _qoder_dispatcher_more=1 ;;
+    *) _qoder_dispatcher_part=$_qoder_dispatcher_rest; _qoder_dispatcher_more= ;;
+  esac
+  if [ "$_qoder_dispatcher_part" != "$_qoder_dispatcher_entry" ]; then
+    _qoder_dispatcher_tail="${_qoder_dispatcher_tail}:${_qoder_dispatcher_part}"
+  fi
+  [ -n "$_qoder_dispatcher_more" ] || break
+done
+PATH="${_qoder_dispatcher_entry}${_qoder_dispatcher_tail}"
+export PATH
+unset _qoder_dispatcher_entry _qoder_dispatcher_rest _qoder_dispatcher_tail _qoder_dispatcher_part _qoder_dispatcher_more
+# END QODER_DISPATCHER_PATH v1
