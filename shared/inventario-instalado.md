@@ -40,7 +40,9 @@ Conteúdo atual:
 - README.md
 - inventario-instalado.md (atualizado)
 - reconstruir-ambiente.md (atualizado)
-- instalar-skills-mattpocock.sh (novo)
+- instalar-skills-mattpocock.sh (atualizado com security-audit)
+- instalar-skills-novo-projeto.sh (novo - script para novos projetos)
+- templates/novo-projeto/ (novo - templates skills-lock.json e opencode.jsonc)
 
 ---
 
@@ -189,7 +191,30 @@ Copiadas de: https://github.com/mattpocock/skills
 
 ---
 
-## 7. Pastas de Configuração Principais
+## 7. Skill de Auditoria de Segurança: security-audit (Cloudflare)
+
+- **Repositório**: https://github.com/cloudflare/security-audit-skill
+- **Instalação Global**: `~/.agents/skills/security-audit` (e links em todos os CLIs)
+- **Instalação em novos projetos**: `bash /home/livre/my-setup-os/shared/instalar-skills-novo-projeto.sh` ou alias `skills-novo-projeto`
+- **Comando manual via Skills CLI**:
+  - Global: `npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit --global`
+  - Projeto: `npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit`
+- **O que faz**:
+  Orquestra subagentes isolados em 6 fases estruturadas:
+  1. Reconnaissance (mapeamento de arquitetura, limites de confiança, ledger de cobertura)
+  2. Coverage-led hunting (atribuição de caçadores isolados para unidades do ledger)
+  3. Candidate validation (verificador independente tenta refutar cada vulnerabilidade)
+  4. Structured output (relatório estruturado em findings.json validado por report-schema.json)
+  5. Independent record verification (verificação independente de claims de código)
+  6. Target-neutral reporting (REPORT.md, FINDINGS-DETAIL.md, NEEDS-VALIDATION.md)
+- **Frases de ativação no agente**:
+  - `security audit this codebase`
+  - `find security vulnerabilities in ./src`
+  - `do a security review, output to ~/audits/meu-projeto`
+
+---
+
+## 8. Pastas de Configuração Principais
 
 | Pasta | Descrição |
 |-------|-----------|
@@ -206,7 +231,7 @@ Copiadas de: https://github.com/mattpocock/skills
 
 ---
 
-## 8. O que NÃO está instalado / Pendente
+## 9. O que NÃO está instalado / Pendente
 
 - [ ] `/srv/shared` - não pode criar sem sudo/root
 - [ ] Skills Matt Pocock: `in-progress/` e `deprecated/` (não copiados ainda)
@@ -215,7 +240,7 @@ Copiadas de: https://github.com/mattpocock/skills
 
 ---
 
-## 9. Histórico de Instalações (de pacotes-instalados.log)
+## 10. Histórico de Instalações (de pacotes-instalados.log)
 
 - Sistema base: Ubuntu 24.04 (WSL2)
 - Node.js via nvm: v24.14.0

@@ -46,6 +46,11 @@ for target in "${SKILLS_TARGETS[@]}"; do
     if [ ! -e "$target/find-skills" ] && [ -d "$SKILLS_SOURCE/find-skills" ]; then
         cp -r "$SKILLS_SOURCE/find-skills" "$target/"
     fi
+
+    # Manter security-audit existente (Cloudflare)
+    if [ ! -e "$target/security-audit" ] && [ -d "$HOME/.agents/skills/security-audit" ]; then
+        ln -sf "$HOME/.agents/skills/security-audit" "$target/security-audit" 2>/dev/null || cp -r "$HOME/.agents/skills/security-audit" "$target/"
+    fi
     
     echo "   ✅ $cli_name: $(ls "$target" | wc -l) pastas de skills"
 done

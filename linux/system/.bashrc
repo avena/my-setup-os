@@ -137,6 +137,7 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 export MESA_LOADER_DRIVER_OVERRIDE=d3d12
 export GALLIUM_DRIVER=d3d12
 alias obsidian='XCURSOR_SIZE=16 ELECTRON_OZONE_PLATFORM_HINT=x11 /usr/bin/obsidian'
+alias skills-novo-projeto='bash /home/livre/my-setup-os/shared/instalar-skills-novo-projeto.sh'
 
 
 # Added by Antigravity CLI installer

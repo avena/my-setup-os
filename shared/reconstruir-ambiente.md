@@ -42,6 +42,21 @@ cp -r skills/productivity ~/.openclaw/skills/
 cp -r skills/misc ~/.openclaw/skills/
 ```
 
+### Skill Security Audit - Cloudflare (~/.agents/skills/security-audit)
+Instalar globalmente para todos os CLIs:
+```bash
+npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit --global -y
+bash /home/livre/my-setup-os/shared/instalar-skills-mattpocock.sh
+```
+
+Instalar em um novo projeto:
+```bash
+# Na raiz do novo projeto:
+bash /home/livre/my-setup-os/shared/instalar-skills-novo-projeto.sh
+# ou via alias:
+skills-novo-projeto
+```
+
 ### Pasta Shared do Projeto
 `/home/livre/my-setup-os/shared/` - use para armazenar configs compartilhadas
 
@@ -56,3 +71,4 @@ cp -r skills/misc ~/.openclaw/skills/
 - [ ] npm global packages listados
 - [ ] skills gsd carregam
 - [ ] skills mattpocock carregam
+- [ ] skill security-audit carrega (global e por projeto)
