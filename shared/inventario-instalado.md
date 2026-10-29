@@ -214,7 +214,35 @@ Copiadas de: https://github.com/mattpocock/skills
 
 ---
 
-## 8. Pastas de Configuração Principais
+## 8. Skill & Plugin: Elephant-Goldfish Model / EGM (Google)
+
+- **Repositório**: https://github.com/google/elephant-goldfish-model
+- **Conceito**: "Design with an elephant. Review with a goldfish."
+  - **Elephant**: Agente com contexto profundo explora o problema e redige a especificação.
+  - **Goldfish**: Subagentes novos, isolados e com contexto zero examinam o rascunho sem viés prévio para encontrar suposições ocultas e falhas.
+  - **Você**: Decide os trade-offs e aprova o design.
+- **Instalação Global**:
+  - Plugin Antigravity (agy): `agy plugin install https://github.com/google/elephant-goldfish-model` (instalado em `~/.gemini/config/plugins/egm`)
+  - Skills CLI: `npx skills add https://github.com/google/elephant-goldfish-model --skill '*' --global -y`
+  - Links criados para todos os CLIs do sistema (OpenCode, Kilo, Antigravity, Copilot, Claude, Codex, Gemini, Qwen, OpenClaw)
+- **Skills Incluídas (7 skills)**:
+  1. `egm-brainstorm`: Exploração interativa de ideias e geração de `concepts_brief.md`.
+  2. `egm-draft`: Redação da especificação de design seção por seção (`design_draft.md`).
+  3. `egm-review`: Protocolo de revisão adversarial em 5 fases com subagentes goldfish.
+  4. `egm-resolve`: Resolução e checkpoints de conciliação de correções.
+  5. `egm-review-loop`: Loop multi-agente de auditoria contra padrões qualitativos.
+  6. `egm-drift-report`: Detecção de drift entre documentos de arquitetura e código fonte.
+  7. `egm-bootstrap`: Criação/atualização de documentação em sub-árvores do repositório.
+- **Comandos no Agent**:
+  - `/egm:egm-brainstorm` ou `egm-brainstorm <ideia>`
+  - `/egm:egm-draft`
+  - `/egm:egm-review design_draft.md`
+  - `/egm:egm-resolve`
+  - `/egm:egm-drift-report`
+
+---
+
+## 9. Pastas de Configuração Principais
 
 | Pasta | Descrição |
 |-------|-----------|
@@ -231,7 +259,7 @@ Copiadas de: https://github.com/mattpocock/skills
 
 ---
 
-## 9. O que NÃO está instalado / Pendente
+## 10. O que NÃO está instalado / Pendente
 
 - [ ] `/srv/shared` - não pode criar sem sudo/root
 - [ ] Skills Matt Pocock: `in-progress/` e `deprecated/` (não copiados ainda)
@@ -240,7 +268,7 @@ Copiadas de: https://github.com/mattpocock/skills
 
 ---
 
-## 10. Histórico de Instalações (de pacotes-instalados.log)
+## 11. Histórico de Instalações (de pacotes-instalados.log)
 
 - Sistema base: Ubuntu 24.04 (WSL2)
 - Node.js via nvm: v24.14.0

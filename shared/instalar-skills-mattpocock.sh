@@ -51,6 +51,13 @@ for target in "${SKILLS_TARGETS[@]}"; do
     if [ ! -e "$target/security-audit" ] && [ -d "$HOME/.agents/skills/security-audit" ]; then
         ln -sf "$HOME/.agents/skills/security-audit" "$target/security-audit" 2>/dev/null || cp -r "$HOME/.agents/skills/security-audit" "$target/"
     fi
+
+    # Manter skills Elephant-Goldfish Model (Google EGM)
+    for egm_skill in egm-bootstrap egm-brainstorm egm-draft egm-drift-report egm-resolve egm-review egm-review-loop; do
+        if [ ! -e "$target/$egm_skill" ] && [ -d "$HOME/.agents/skills/$egm_skill" ]; then
+            ln -sf "$HOME/.agents/skills/$egm_skill" "$target/$egm_skill" 2>/dev/null || cp -r "$HOME/.agents/skills/$egm_skill" "$target/"
+        fi
+    done
     
     echo "   ✅ $cli_name: $(ls "$target" | wc -l) pastas de skills"
 done

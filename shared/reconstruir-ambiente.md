@@ -49,7 +49,18 @@ npx skills add https://github.com/cloudflare/security-audit-skill --skill securi
 bash /home/livre/my-setup-os/shared/instalar-skills-mattpocock.sh
 ```
 
-Instalar em um novo projeto:
+### Skills Elephant-Goldfish Model / EGM - Google (~/.agents/skills/egm-*)
+Instalar plugin no Antigravity e globalmente para todos os CLIs:
+```bash
+# Plugin para Antigravity
+agy plugin install https://github.com/google/elephant-goldfish-model
+
+# Skills globais para todos os CLIs
+npx skills add https://github.com/google/elephant-goldfish-model --skill '*' --global -y
+bash /home/livre/my-setup-os/shared/instalar-skills-mattpocock.sh
+```
+
+### Instalar todas as skills em um novo projeto:
 ```bash
 # Na raiz do novo projeto:
 bash /home/livre/my-setup-os/shared/instalar-skills-novo-projeto.sh
@@ -72,3 +83,4 @@ skills-novo-projeto
 - [ ] skills gsd carregam
 - [ ] skills mattpocock carregam
 - [ ] skill security-audit carrega (global e por projeto)
+- [ ] skills EGM (egm-*) carregam (global, plugin agy e por projeto)
