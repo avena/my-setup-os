@@ -13,6 +13,66 @@ Arquivo de configuração do Git, válido para todos os ambientes. Contém:
 - Configurações de diff e merge
 - Inclusão de configurações específicas do sistema
 
+### Scripts e Templates de Skills para Coding Agents
+- **`instalar-skills-novo-projeto.sh`**: Script para configurar e registrar automaticamente o EGM (Google) e o Security Audit (Cloudflare) em novos repositórios.
+- **`instalar-skills-mattpocock.sh`**: Script de sincronização que propaga as skills para os 9 CLIs de coding agents.
+- **`inventario-instalado.md`**: Inventário consolidado do sistema, pacotes, plugins e skills instaladas.
+- **`reconstruir-ambiente.md`**: Guia passo a passo para restaurar todo o ambiente a partir do zero.
+- **`templates/novo-projeto/`**: Template contendo `skills-lock.json` e `opencode.jsonc` pré-configurados.
+
+---
+
+## Skills para Coding Agents (EGM & Security Audit)
+
+### Como Acionar as Skills no seu Coding Agent
+
+#### 1. Elephant-Goldfish Model (Google EGM)
+No **Antigravity (agy CLI)** e **Claude Code**, utilize o prefixo `/egm:`. No **Codex** e **OpenCode**, utilize o seletor de skills ou invoque diretamente:
+
+- **Ideação e Brainstorm:**
+  ```text
+  /egm:egm-brainstorm Adicionar autenticação OAuth2 neste projeto
+  ```
+  *(Explora requisitos e trade-offs, subagentes desafiam a proposta e salvam o direcionamento em `concepts_brief.md`)*
+
+- **Redação da Especificação:**
+  ```text
+  /egm:egm-draft
+  ```
+  *(Transforma o brief em `design_draft.md`, pausando após cada seção para validação em chat)*
+
+- **Revisão Adversarial com Subagentes (Goldfish):**
+  ```text
+  /egm:egm-review design_draft.md
+  ```
+  *(Subagentes 'goldfish' examinam o rascunho sem viés histórico e reportam lacunas e premissas implícitas)*
+
+- **Resolução de apontamentos:**
+  ```text
+  /egm:egm-resolve
+  ```
+  *(Aplica conciliações e correções aprovadas no documento de design)*
+
+- **Checagem de consistência docs vs código:**
+  ```text
+  /egm:egm-drift-report
+  ```
+  *(Verifica divergências entre documentos de arquitetura e o código-fonte)*
+
+#### 2. Security Audit (Cloudflare)
+- `security audit this codebase`
+- `find security vulnerabilities in ./src`
+- `do a security review, output to ~/audits/meu-projeto`
+
+### Instalar Skills em Novos Projetos
+```bash
+skills-novo-projeto
+# ou com o pacote completo de engenharia/produtividade:
+skills-novo-projeto --all
+```
+
+---
+
 ## Configuração
 
 ### Links Simbólicos

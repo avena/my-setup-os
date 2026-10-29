@@ -26,8 +26,13 @@ my-setup-os/
 │   └── references/                    # Curated references for dotfiles management
 │       └── README.md                  # Guide to dotfiles resources and best practices
 ├── shared/                            # Configurações cross-platform
-│   └── .gitconfig                     # Configuração do Git (valida para todos)
-│   └── README.md                      # Explicação das configurações compartilhadas
+│   ├── .gitconfig                     # Configuração do Git (válida para todos)
+│   ├── README.md                      # Explicação das configurações compartilhadas
+│   ├── instalar-skills-novo-projeto.sh# Configura EGM e Security Audit em novos projetos
+│   ├── instalar-skills-mattpocock.sh  # Sincroniza skills entre os 9 coding CLIs
+│   ├── inventario-instalado.md        # Inventário completo de ferramentas e skills
+│   ├── reconstruir-ambiente.md        # Guia de restauração do setup
+│   └── templates/novo-projeto/        # Templates pré-configurados (skills-lock.json)
 │
 ├── windows/                           # Configurações específicas do Windows Host
 │   ├── fonts/                         # Instalação de fontes para Windows
@@ -83,6 +88,78 @@ my-setup-os/
 - Permissões mantidas no sistema Linux
 - Scripts verificados e testados
 - Arquivos de configuração seguros
+
+## Skills para Coding Agents (AI Engineering)
+
+O setup conta com um ecossistema completo de **Skills** compartilhadas entre todos os agentes de IA instalados (Antigravity, Claude Code, OpenCode, Codex, Kilo, Copilot, Gemini, Qwen, OpenClaw):
+
+1. **Elephant-Goldfish Model (Google EGM)**:
+   - Metodologia *"Design with an elephant. Review with a goldfish."*
+   - O **Elephant** (contexto amplo) redige a especificação e o design.
+   - O **Goldfish** (subagentes isolados com contexto zero) revisa sem viés para expor suposições e riscos.
+   - Plugin oficial instalado no Antigravity (`agy plugin install https://github.com/google/elephant-goldfish-model`) e 7 skills integradas globalmente.
+
+2. **Security Audit (Cloudflare)**:
+   - Auditoria rigorosa de vulnerabilidades e segurança arquitetural com caçadores e verificadores adversariais.
+
+---
+
+### Como Acionar as Skills no seu Coding Agent
+
+#### 1. Elephant-Goldfish Model (Google EGM)
+> **Nota de Sintaxe:** No **Antigravity (agy CLI)** e **Claude Code**, use com o prefixo `/egm:`. No **Codex**, selecione a skill correspondente no menu de skills. No **OpenCode**, chame o comando diretamente.
+
+- **Ideação e Brainstorm:**
+  ```text
+  /egm:egm-brainstorm Adicionar autenticação OAuth2 neste projeto
+  ```
+  *(Explora requisitos e trade-offs, desafia a proposta e consolida a direção acordada em `concepts_brief.md`)*
+
+- **Redação da Especificação:**
+  ```text
+  /egm:egm-draft
+  ```
+  *(Transforma o brief em `design_draft.md`, pausando após cada seção para seu feedback e aprovação)*
+
+- **Revisão Adversarial com Subagentes (Goldfish):**
+  ```text
+  /egm:egm-review design_draft.md
+  ```
+  *(Subagentes isolados sem histórico examinam clareza, riscos e acoplamento ao código)*
+
+- **Resolução de apontamentos:**
+  ```text
+  /egm:egm-resolve
+  ```
+  *(Aplica conciliações e correções aprovadas no documento de design)*
+
+- **Checagem de consistência docs vs código:**
+  ```text
+  /egm:egm-drift-report
+  ```
+  *(Compara os documentos de design aprovados com o código-fonte atual para detectar divergências)*
+
+#### 2. Security Audit (Cloudflare)
+- `security audit this codebase`
+- `find security vulnerabilities in ./src`
+- `do a security review, output to ~/audits/meu-projeto`
+
+---
+
+### Como Habilitar em um Novo Projeto
+
+Para inicializar automaticamente o **EGM** e o **Security Audit** em qualquer novo repositório:
+```bash
+skills-novo-projeto
+```
+*(ou `bash /home/livre/my-setup-os/shared/instalar-skills-novo-projeto.sh`)*
+
+Para incluir também o pacote completo de engenharia/produtividade do Matt Pocock:
+```bash
+skills-novo-projeto --all
+```
+
+---
 
 ## Guia Rápido
 
