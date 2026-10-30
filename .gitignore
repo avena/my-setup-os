@@ -1,1 +1,18 @@
 .qwen/
+
+# Segredos e credenciais (nunca versionar)
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+cookies.txt
+*.netrc
+*.pgpass
+.claude.json
+.secrets/
+
+# SSH / GPG chaves privadas
+.ssh/id_*
+.ssh/*_*

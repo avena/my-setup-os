@@ -62,6 +62,7 @@ if ($InstallScoop -or $All) {
     if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
         Write-Host "$GREEN[INFO] Instalando Scoop...$NC"
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        # AVISO SEGURANCA: instala Scoop via iex(Invoke-RestMethod) de get.scoop.sh (script oficial).
         iex (Invoke-RestMethod get.scoop.sh)
         Write-Host "$GREEN[OK] Scoop instalado.$NC"
     } else {

@@ -24,9 +24,9 @@ Write-Host "WSL IP: $WSL_IP" -Foreground Green
 netsh interface portproxy delete v4tov4 listenport=$Port listenaddress=0.0.0.0 2>$null
 Remove-NetFirewallRule -DisplayName "WSL SSH $Port" -ErrorAction SilentlyContinue
 
-# Cria forward
+# Cria forward (escuta em 0.0.0.0, mas a regra de firewall restringe a redes privadas/dominio)
 netsh interface portproxy add v4tov4 listenport=$Port listenaddress=0.0.0.0 connectport=$Port connectaddress=$WSL_IP
-New-NetFirewallRule -DisplayName "WSL SSH $Port" -Direction Inbound -LocalPort $Port -Action Allow -Protocol TCP
+New-NetFirewallRule -DisplayName "WSL SSH $Port" -Direction Inbound -LocalPort $Port -Action Allow -Protocol TCP -Profile Private,Domain
 
 # IP Windows
 $winIP = (Get-NetIPAddress -AddressFamily IPv4 | ? { $_.InterfaceAlias -match 'Ethernet|Wi-Fi|WiFi' } | Select -First 1).IPAddress

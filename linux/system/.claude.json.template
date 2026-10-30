@@ -1,0 +1,13 @@
+{
+  "providerProfiles": [
+    {
+      "id": "provider_openrouter",
+      "name": "OpenRouter",
+      "provider": "openai",
+      "baseUrl": "https://openrouter.ai/api/v1",
+      "model": "SUA_MODELO_AQUI",
+      "apiKey": "SUA_CHAVE_AQUI"
+    }
+  ],
+  "activeProviderProfileId": "provider_openrouter"
+}

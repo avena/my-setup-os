@@ -12,6 +12,7 @@ if command -v brew &> /dev/null; then
     brew update
 else
     # Instala o Homebrew
+    # AVISO SEGURANCA: instala via pipe curl|bash (script oficial do Homebrew).
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     
     # Adiciona ao PATH (para Linux/WSL)

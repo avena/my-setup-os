@@ -1,0 +1,32 @@
+# INVENTÁRIO FINAL - PROJETO ATUALIZADO
+
+## ✅ COMPROMISSOS CUMPRIDOS
+
+### 1. **Instalação Global da Skill security-audit (Cloudflare)**
+- ✅ Instalada via Skills CLI globalmente (`~/.agents/skills/security-audit`)
+- ✅ Linkada para todos os CLIs do sistema: OpenCode, Kilo, Antigravity, Copilot, Claude, Codex, Gemini, Qwen, OpenClaw
+- ✅ Validadores e testes executados com 100% de sucesso
+
+### 2. **Instalação Global e Plugin Elephant-Goldfish Model / EGM (Google)**
+- ✅ Instalado plugin oficial no Antigravity CLI via `agy plugin install https://github.com/google/elephant-goldfish-model`
+- ✅ Instaladas todas as 7 skills via Skills CLI (`~/.agents/skills/egm-*`):
+  - `egm-bootstrap`, `egm-brainstorm`, `egm-draft`, `egm-drift-report`, `egm-resolve`, `egm-review`, `egm-review-loop`
+- ✅ Linkadas para todos os 9 CLIs do sistema
+- ✅ Suporte a 9 agentes especializados em review adversarial integrados
+
+### 3. **Automação para Novos Projetos**
+- ✅ Script criado e testado: `shared/instalar-skills-novo-projeto.sh`
+- ✅ Alias ativo no `.bashrc`: `skills-novo-projeto`
+- ✅ Instala e vincula automaticamente:
+  - `security-audit` (Cloudflare)
+  - `egm-*` (Google Elephant-Goldfish Model - 7 skills)
+  - Opcionalmente Matt Pocock (`--all`)
+- ✅ Templates prontos em `shared/templates/novo-projeto/` (`skills-lock.json`, `opencode.jsonc`, `README.md`)
+- ✅ `instalar-skills-mattpocock.sh` atualizado para manter ambas sincronizadas
+
+### 4. **Integração no Repositório my-setup-os**
+- ✅ `skills-lock.json` completo na raiz
+- ✅ `.agents/skills/` e `.opencode/skills/` contendo todas as skills
+- ✅ Documentação completa em `shared/inventario-instalado.md` e `shared/reconstruir-ambiente.md`
+
+**TUDO FEITO COM SUCESSO.**
