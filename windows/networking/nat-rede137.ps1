@@ -142,7 +142,7 @@ Write-Host "   - Verifique se recebeu IP 192.168.137.x"
 Write-Host "   - Teste: ping 8.8.8.8"
 Write-Host ""
 Write-Host "SE NAO FUNCIONAR:"
-Write-Host "   - Execute: Set-NetFirewallProfile -Profile Public,Private -Enabled False"
+Write-Host "   - Nao desative o firewall. Crie regras específicas com New-NetFirewallRule se precisar abrir portas."
 Write-Host "   - Verifique: Get-NetNat"
 Write-Host ""
 

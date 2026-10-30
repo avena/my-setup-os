@@ -15,23 +15,30 @@ declare -A C=(
   [6]='mkdir -p ~/.opencode/bin && curl -sSfL https://github.com/sst/opencode/releases/latest/download/opencode-linux-x64 -o ~/.opencode/bin/opencode && chmod +x ~/.opencode/bin/opencode && grep -q ".opencode/bin" ~/.bashrc || echo "export PATH=\$HOME/.opencode/bin:\$PATH" >> ~/.bashrc'
   [7]='npm i -g @qwen-code/qwen-code'
   [8]='sudo mkdir -p /etc/apt/keyrings && curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg && echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list && sudo apt update -q && sudo apt install -y crush'
-  [9]='echo y | curl -sL https://plandex.ai/install.sh | bash'
-  [10]='sudo apt install -y bzip2 && curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh | CONFIGURE=false bash'
+  # AVISO SEGURANCA: instala via pipe curl|bash de terceiros (plandex.ai).
+  # Baixar primeiro, inspecionar e executar manualmente em ambiente sensível.
+  [9]='curl -sSL https://plandex.ai/install.sh -o /tmp/plandex-install.sh && bash /tmp/plandex-install.sh'
+  # AVISO SEGURANCA: instala via pipe curl|bash de terceiros (github.com/block).
+  [10]='sudo apt install -y bzip2 && curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh -o /tmp/goose-install.sh && CONFIGURE=false bash /tmp/goose-install.sh'
   [11]='pip3 install --user amazon-q-cli'
   [12]='npm i -g vibe-cli'
   [13]='npm i -g cline@latest'
   [14]='npm i -g bolt-new'
   [15]='pip3 install --user pygpt-net'
   [16]='npm i -g aichat'
-  [17]='curl --proto "=https" --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && source ~/.cargo/env && cargo install droid-cli'
+  # AVISO SEGURANCA: instala Rust via pipe curl|sh (sh.rustup.rs, oficial).
+  [17]='curl --proto "=https" --tlsv1.2 -sSf https://sh.rustup.rs -o /tmp/rustup.sh && sh /tmp/rustup.sh -s -- -y && source ~/.cargo/env && cargo install droid-cli'
   [18]='npm i -g @replit/agent'
   [19]='docker pull tabbyml/tabby && docker run -d -p 8080:8080 --name tabby tabbyml/tabby'
-  [20]='curl -L code.kimi.com/install.sh | bash'
+  # AVISO SEGURANCA: instala via pipe curl|bash de terceiros (code.kimi.com).
+  [20]='curl -L code.kimi.com/install.sh -o /tmp/kimi-install.sh && bash /tmp/kimi-install.sh'
   [21]='npm i -g roo-cline'
-  [22]='curl -fsSL https://openclaw.dev/install.sh | bash'
+  # AVISO SEGURANCA: instala via pipe curl|bash de terceiros (openclaw.dev).
+  [22]='curl -fsSL https://openclaw.dev/install.sh -o /tmp/openclaw-install.sh && bash /tmp/openclaw-install.sh'
   [23]='pip3 install --user nanocode'
   [24]='npm i -g @gitlawb/openclaude'
   [25]='npm i -g @guizmo-ai/zai-cli'
+  # AVISO SEGURANCA: binario baixado de release nao assinada (github.com/jaymeg/top100clis).
   [26]='curl -sSfL https://github.com/jaymeg/top100clis/releases/latest/download/top100clis -o /tmp/top100clis && sudo mv /tmp/top100clis /usr/local/bin/top100clis && sudo chmod +x /usr/local/bin/top100clis'
 )
 # Tipo: oficial ou comunitario (nao oficial)
@@ -62,7 +69,8 @@ check_dep() {
     npm)
       if ! command -v npm >/dev/null 2>&1; then
         echo ">> precisa de node/npm. vai pedir sudo."
-        curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+        # AVISO SEGURANCA: instala NodeSource via pipe curl|sudo bash (oficial).
+        curl -fsSL https://deb.nodesource.com/setup_lts.x -o /tmp/nodesource-setup.sh && sudo -E bash /tmp/nodesource-setup.sh
         sudo apt install -y nodejs || return 1
       fi
       setup_npm_user
@@ -77,7 +85,8 @@ check_dep() {
     cargo)
       if ! command -v cargo >/dev/null 2>&1; then
         echo ">> precisa de rust/cargo. sem sudo."
-        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y || return 1
+        # AVISO SEGURANCA: instala Rust via pipe curl|sh (sh.rustup.rs, oficial).
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o /tmp/rustup.sh && sh /tmp/rustup.sh -s -- -y || return 1
         [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
       fi
       reload_path
@@ -85,7 +94,8 @@ check_dep() {
     docker)
       if ! command -v docker >/dev/null 2>&1; then
         echo ">> precisa de docker. vai pedir sudo."
-        curl -fsSL https://get.docker.com | sudo sh || return 1
+        # AVISO SEGURANCA: instala Docker via pipe curl|sudo sh (oficial).
+        curl -fsSL https://get.docker.com -o /tmp/get-docker.sh && sudo sh /tmp/get-docker.sh || return 1
       fi
       ;;
     curl)

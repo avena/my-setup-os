@@ -166,7 +166,7 @@ Write-Host "   2. Configure seu servidor DHCP para cada rede conforme acima"
 Write-Host "   3. Desative o ICS em interfaces que nao precisem dele"
 Write-Host ""
 Write-Host "SE NAO FUNCIONAR:"
-Write-Host "   - Execute: Set-NetFirewallProfile -Profile Public,Private -Enabled False"
+Write-Host "   - Nao desative o firewall. Crie regras específicas com New-NetFirewallRule se precisar abrir portas."
 Write-Host "   - Verifique: Get-NetNat"
 Write-Host ""
 

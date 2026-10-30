@@ -54,7 +54,7 @@ if ($List -or -not ($List -or $Clean)) {
 
 if ($Clean) {
     Write-Host "`n🗑️  Iniciando limpeza COMPLETA..." -ForegroundColor Red
-    $nats = Get-NetNat
+    $nats = Get-NetNat | Where-Object { $_.Name -like "Rede50*" -or $_.Name -like "NAT-Rede50*" -or $_.Name -like "Rede137*" }
     $natCount = 0
     if ($nats) {
         $nats | Remove-NetNat -Confirm:$false -ErrorAction SilentlyContinue

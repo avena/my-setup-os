@@ -48,19 +48,24 @@ install_nerd_fonts_direct() {
   # seja criada pelo usuário real, e não pelo root.
   sudo -u "$REAL_USER" mkdir -p "$FONTS_DIR"
 
+  # Diretorio temporario isolado para downloads (evita /tmp previsivel e symlink attacks)
+  local TMP_ROOT
+  TMP_ROOT="$(mktemp -d)"
+  trap 'rm -rf "$TMP_ROOT"' EXIT
+
   for font in "${FONTS[@]}"; do
     echo -e "${YELLOW}[INFO] Baixando ${font} Nerd Font...${NC}"
-    # Download como root na pasta /tmp (seguro)
-    aria2c -q -x 4 -s 4 -d /tmp -o "${font}.zip" "https://github.com/ryanoasis/nerd-fonts/releases/download/${NF_VERSION}/${font}.zip"
+    local ZIP_PATH="${TMP_ROOT}/${font}.zip"
+    # Download para temp isolado do usuario real
+    sudo -u "$REAL_USER" aria2c -q -x 4 -s 4 -d "$TMP_ROOT" -o "${font}.zip" "https://github.com/ryanoasis/nerd-fonts/releases/download/${NF_VERSION}/${font}.zip"
     
     echo -e "${CYAN}[INFO] Extraindo e movendo ${font}...${NC}"
-    # O comando abaixo extrai com a propriedade (owner) do usuário verdadeiro, não do root
-    sudo -u "$REAL_USER" bash -c "unzip -q -o /tmp/${font}.zip -d ${FONTS_DIR}"
-    rm -f "/tmp/${font}.zip"
+    # O comando abaixo extrai com a propriedade (owner) do usuario verdadeiro, nao do root
+    sudo -u "$REAL_USER" bash -c "unzip -q -o \"${ZIP_PATH}\" -d ${FONTS_DIR}"
   done
 
-  echo -e "${CYAN}[INFO] Atualizando cache de fontes do sistema para o usuário ${REAL_USER}...${NC}"
-  # O fc-cache deve ser rodado como o usuário, para ler a própria pasta
+  echo -e "${CYAN}[INFO] Atualizando cache de fontes do sistema para o usuario ${REAL_USER}...${NC}"
+  # O fc-cache deve ser rodado como o usuario, para ler a propria pasta
   sudo -u "$REAL_USER" fc-cache -fv "$FONTS_DIR"
 }
 
