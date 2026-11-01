@@ -23,6 +23,7 @@ my-setup-os/
 ├── docs/                              # Documentation and references
 │   ├── fonts.md                       # Instalação de fontes para editores e terminais
 │   ├── top-clis.md                    # Catálogo de 26 CLIs de IA/Coding: instalação e uso
+│   ├── deploy-dreamhost.md            # Playbook de deploy incremental rsync/SSH para DreamHost
 │   └── references/                    # Curated references for dotfiles management
 │       └── README.md                  # Guide to dotfiles resources and best practices
 ├── shared/                            # Configurações cross-platform
@@ -32,7 +33,8 @@ my-setup-os/
 │   ├── instalar-skills-mattpocock.sh  # Sincroniza skills entre os 9 coding CLIs
 │   ├── inventario-instalado.md        # Inventário completo de ferramentas e skills
 │   ├── reconstruir-ambiente.md        # Guia de restauração do setup
-│   └── templates/novo-projeto/        # Templates pré-configurados (skills-lock.json)
+│   ├── templates/novo-projeto/        # Templates pré-configurados (skills-lock.json)
+│   └── templates/deploy/              # Automações de deploy (deploy-dreamhost.sh)
 │
 ├── windows/                           # Configurações específicas do Windows Host
 │   ├── fonts/                         # Instalação de fontes para Windows
@@ -66,6 +68,11 @@ my-setup-os/
     └── packages/                      # Gerenciamento de pacotes
         └── README.md                  # Instruções de instalação de pacotes
 ```
+
+## Deploy e Hospedagem
+
+- **[Deploy DreamHost via Rsync](docs/deploy-dreamhost.md)**: Playbook de deploy incremental para hospedagem compartilhada (rsync sobre SSH, algoritmo delta, compressão em trânsito, dry-run e exclusões seguras).
+- **[Template `deploy-dreamhost.sh`](shared/templates/deploy/deploy-dreamhost.sh)**: Script bash parametrizado e reutilizável para sincronizar builds locais (WSL/Linux) à DreamHost.
 
 ## Características Principais
 
