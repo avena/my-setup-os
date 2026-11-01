@@ -1,0 +1,252 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "chrome-devtools": {
+      "type": "local",
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest", "--browserUrl", "http://172.26.64.1:9222"],
+      "enabled": true,
+      "timeout": 15000
+    },
+    "playwright": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp@latest",
+        "--browser",
+        "chromium",
+        "--headless",
+        "--console-level",
+        "info"
+      ],
+      "enabled": true,
+      "timeout": 30000
+    },
+    "react": {
+      "type": "local",
+      "command": ["npx", "-y", "react-mcp@latest"],
+      "enabled": true,
+      "timeout": 15000
+    },
+    "proxyman": {
+      "type": "local",
+      "command": ["npx", "-y", "proxyman-mcp@latest"],
+      "enabled": true,
+      "timeout": 15000
+    },
+    "blender": {
+      "type": "local",
+      "command": ["uvx", "blender-mcp"],
+      "enabled": true,
+      "timeout": 20000
+    },
+    "neon": {
+      "type": "local",
+      "command": ["npx", "-y", "@neondatabase/mcp-server-neon@latest"],
+      "environment": {
+        "NEON_API_KEY": "env:NEON_API_KEY"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "mysql": {
+      "type": "local",
+      "command": ["npx", "-y", "@benborla/mcp-server-mysql@latest"],
+      "environment": {
+        "MYSQL_HOST": "127.0.0.1",
+        "MYSQL_USER": "env:MYSQL_USER",
+        "MYSQL_PASSWORD": "env:MYSQL_PASSWORD",
+        "MYSQL_DATABASE": "env:MYSQL_DATABASE"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "laravel-codebase": {
+      "type": "local",
+      "command": ["npx", "-y", "laravel-codebase-mcp@latest"],
+      "enabled": true,
+      "timeout": 20000
+    },
+    "laravel-companion": {
+      "type": "local",
+      "command": ["npx", "-y", "laravel-mcp-companion@latest"],
+      "enabled": true,
+      "timeout": 20000
+    },
+    "context7": {
+      "type": "local",
+      "command": ["npx", "-y", "context7-mcp@latest"],
+      "enabled": true,
+      "timeout": 20000
+    },
+    "docstar": {
+      "type": "local",
+      "command": ["npx", "-y", "docstar-mcp@latest"],
+      "environment": {
+        "DOCSTAR_API_KEY": "env:DOCSTAR_API_KEY"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "openspec": {
+      "type": "local",
+      "command": ["npx", "-y", "openspec-mcp@latest"],
+      "enabled": true,
+      "timeout": 15000
+    },
+    "better-code-review-graph": {
+      "type": "local",
+      "command": ["npx", "-y", "better-code-review-graph@latest"],
+      "enabled": true,
+      "timeout": 20000
+    },
+    "parallel": {
+      "type": "local",
+      "command": ["npx", "-y", "parallel-mcp@latest"],
+      "enabled": true,
+      "timeout": 20000
+    },
+    "kb-server": {
+      "type": "local",
+      "command": ["uvx", "kb-mcp-server"],
+      "environment": {
+        "KB_STORAGE_PATH": "/home/livre/.kb-storage"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "open-crawler": {
+      "type": "local",
+      "command": ["npx", "-y", "open-crawler-mcp@latest"],
+      "enabled": true,
+      "timeout": 30000
+    },
+    "google-search": {
+      "type": "local",
+      "command": ["npx", "-y", "@crawlerdata/google-search-mcp@latest"],
+      "environment": {
+        "SERP_API_KEY": "env:SERP_API_KEY"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "hasdata-scraping": {
+      "type": "local",
+      "command": ["npx", "-y", "@hasdata/mcp-server@latest"],
+      "environment": {
+        "HASDATA_API_KEY": "env:HASDATA_API_KEY"
+      },
+      "enabled": true,
+      "timeout": 30000
+    },
+    "yahoo-finance": {
+      "type": "local",
+      "command": ["uvx", "mcp-server-yahoo-finance"],
+      "enabled": true,
+      "timeout": 20000
+    },
+    "wordpress": {
+      "type": "local",
+      "command": ["npx", "-y", "@automattic/wordpress-mcp@latest"],
+      "environment": {
+        "WORDPRESS_URL": "env:WORDPRESS_URL",
+        "WORDPRESS_USERNAME": "env:WORDPRESS_USERNAME",
+        "WORDPRESS_APP_PASSWORD": "env:WORDPRESS_APP_PASSWORD"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "netlify": {
+      "type": "local",
+      "command": ["npx", "-y", "@netlify/mcp@latest"],
+      "environment": {
+        "NETLIFY_AUTH_TOKEN": "env:NETLIFY_AUTH_TOKEN"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "github": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-github@latest"],
+      "environment": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "env:GITHUB_TOKEN"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "notion": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-notion@latest"],
+      "environment": {
+        "NOTION_API_KEY": "env:NOTION_API_KEY"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "todoist": {
+      "type": "local",
+      "command": ["npx", "-y", "@doist/todoist-mcp@latest"],
+      "environment": {
+        "TODOIST_API_TOKEN": "env:TODOIST_API_TOKEN"
+      },
+      "enabled": true,
+      "timeout": 15000
+    },
+    "atlassian": {
+      "type": "local",
+      "command": ["npx", "-y", "@atlassian/mcp-server@latest"],
+      "environment": {
+        "ATLASSIAN_HOST": "env:ATLASSIAN_HOST",
+        "ATLASSIAN_EMAIL": "env:ATLASSIAN_EMAIL",
+        "ATLASSIAN_API_TOKEN": "env:ATLASSIAN_API_TOKEN"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "evernote": {
+      "type": "local",
+      "command": ["npx", "-y", "evernote-mcp@latest"],
+      "environment": {
+        "EVERNOTE_ACCESS_TOKEN": "env:EVERNOTE_ACCESS_TOKEN"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "obsidian": {
+      "type": "local",
+      "command": ["npx", "-y", "obsidian-regulatory-mcp@latest"],
+      "environment": {
+        "OBSIDIAN_VAULT_PATH": "/home/livre/Documents/ObsidianVault"
+      },
+      "enabled": true,
+      "timeout": 15000
+    },
+    "notebooklm": {
+      "type": "local",
+      "command": ["uvx", "notebooklm-mcp"],
+      "enabled": true,
+      "timeout": 30000
+    },
+    "offense-research": {
+      "type": "local",
+      "command": ["uvx", "offense-mcp"],
+      "enabled": true,
+      "timeout": 20000
+    },
+    "gemini-embedding": {
+      "type": "local",
+      "command": ["uvx", "gemini-embedding-mcp"],
+      "environment": {
+        "GEMINI_API_KEY": "env:GEMINI_API_KEY"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "superpowers": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-superpowers@latest"],
+      "enabled": true,
+      "timeout": 15000
+    }
+  }
+}

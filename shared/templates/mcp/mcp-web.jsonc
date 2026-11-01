@@ -1,0 +1,47 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "chrome-devtools": {
+      "type": "local",
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest", "--browserUrl", "http://172.26.64.1:9222"],
+      "enabled": true,
+      "timeout": 15000
+    },
+    "playwright": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp@latest",
+        "--browser",
+        "chromium",
+        "--headless",
+        "--console-level",
+        "info"
+      ],
+      "enabled": true,
+      "timeout": 30000
+    },
+    "react": {
+      "type": "local",
+      "command": ["npx", "-y", "react-mcp@latest"],
+      "enabled": true,
+      "timeout": 15000
+    },
+    "proxyman": {
+      "type": "local",
+      "command": ["npx", "-y", "proxyman-mcp@latest"],
+      "enabled": true,
+      "timeout": 15000
+    },
+    "netlify": {
+      "type": "local",
+      "command": ["npx", "-y", "@netlify/mcp@latest"],
+      "environment": {
+        "NETLIFY_AUTH_TOKEN": "env:NETLIFY_AUTH_TOKEN"
+      },
+      "enabled": true,
+      "timeout": 20000
+    }
+  }
+}

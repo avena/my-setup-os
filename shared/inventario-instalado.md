@@ -42,7 +42,10 @@ Conteúdo atual:
 - reconstruir-ambiente.md (atualizado)
 - instalar-skills-mattpocock.sh (atualizado com security-audit)
 - instalar-skills-novo-projeto.sh (novo - script para novos projetos)
-- templates/novo-projeto/ (novo - templates skills-lock.json e opencode.jsonc)
+- setup-mcps.sh (gerenciador e instalador de perfis MCP para OpenCode)
+- templates/novo-projeto/ (templates skills-lock.json e opencode.jsonc)
+- templates/mcp/ (perfis de servidores MCP: web, backend, scraping, productivity, full e .env.mcp.example)
+- skills/ (novas skills registradas: bootstrap-5-overview, prompt-optimizer, data-scraper-agent, notebooklm-skill, postgres-best-practices, frontend-design)
 
 ---
 
@@ -275,6 +278,28 @@ Copiadas de: https://github.com/mattpocock/skills
 - Bun, uv, rust/cargo disponíveis
 - Docker instalado
 - WSL utilities (wslu, wsl-pro-service)
+
+---
+
+## 12. Servidores MCP e Novas Agent Skills (Adicionado em 2026-11-01)
+
+- **Catálogo de Referência**: `docs/mcp-catalog.md` (37 servidores MCP + 6 skills com comandos, envs e exemplos de prompts).
+- **Gerenciador / Instalador**: `shared/setup-mcps.sh`
+  - Sintaxe: `bash shared/setup-mcps.sh [status|check-syntax|init-env|profiles|apply <perfil>]`
+- **Perfis de MCP em `shared/templates/mcp/`**:
+  - `mcp-web.jsonc` (Chrome DevTools, Playwright, React, Proxyman, Netlify)
+  - `mcp-backend.jsonc` (Neon Postgres, MySQL, Laravel Codebase, Laravel Companion)
+  - `mcp-scraping.jsonc` (Open Crawler, Google Search, HasData, Yahoo Finance)
+  - `mcp-productivity.jsonc` (GitHub, Notion, Todoist, Atlassian, Evernote, Obsidian, NotebookLM)
+  - `mcp-full.jsonc` (todos os 30+ servidores catalogados)
+  - `.env.mcp.example` (template de credenciais e tokens)
+- **Novas Skills Registradas em `shared/skills/` e `~/.config/opencode/skills/`**:
+  - `bootstrap-5-overview`: Setup e layout responsivo com Bootstrap 5.3.
+  - `prompt-optimizer`: Refinador de prompts em 5 etapas para tarefas de engenharia de software.
+  - `data-scraper-agent`: Pipelines resilientes de coleta com proteção contra prompt injection.
+  - `notebooklm-skill`: Pesquisa fundamentada e discovery de cadernos no Google NotebookLM.
+  - `postgres-best-practices`: Melhores práticas Supabase/PostgreSQL (índices, RLS, queries limpas).
+  - `frontend-design`: Design de interfaces distintas de produção sem vícios de IA.
 
 ---
 
