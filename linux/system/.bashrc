@@ -161,3 +161,6 @@ PATH="${_qoder_dispatcher_entry}${_qoder_dispatcher_tail}"
 export PATH
 unset _qoder_dispatcher_entry _qoder_dispatcher_rest _qoder_dispatcher_tail _qoder_dispatcher_part _qoder_dispatcher_more
 # END QODER_DISPATCHER_PATH v1
+
+# Entire CLI: WSL sem keyring, guarda tokens em ~/.config/entire/tokens.json (0600)
+export ENTIRE_TOKEN_STORE=file

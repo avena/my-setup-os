@@ -291,7 +291,8 @@ Copiadas de: https://github.com/mattpocock/skills
   - `mcp-backend.jsonc` (Neon Postgres, MySQL, Laravel Codebase, Laravel Companion)
   - `mcp-scraping.jsonc` (Open Crawler, Google Search, HasData, Yahoo Finance)
   - `mcp-productivity.jsonc` (GitHub, Notion, Todoist, Atlassian, Evernote, Obsidian, NotebookLM)
-  - `mcp-full.jsonc` (todos os 30+ servidores catalogados)
+  - `mcp-full.jsonc` (todos os 30+ servidores catalogados, exceto os de CAD/GIS/3D)
+  - `mcp-cad-gis-3d.jsonc` (Blender + FreeCAD + QGIS — **só por projeto**, `enabled: false`)
   - `.env.mcp.example` (template de credenciais e tokens)
 - **Novas Skills Registradas em `shared/skills/` e `~/.config/opencode/skills/`**:
   - `bootstrap-5-overview`: Setup e layout responsivo com Bootstrap 5.3.

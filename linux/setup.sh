@@ -184,6 +184,44 @@ else
 fi
 
 # ============================================================
+# 11. Instalar Entire CLI (checkpoints de sessões + brain)
+# ============================================================
+echo -e "\n${CYAN}--- 11. Entire CLI (checkpoints de agentes) ---${NC}"
+if [[ -f "$REPO_DIR/linux/cli/install-entire.sh" ]]; then
+    read -p "Deseja instalar o Entire CLI (checkpoints de sessões de agentes + brain)? (s/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Ss]$ ]]; then
+        bash "$REPO_DIR/linux/cli/install-entire.sh" || \
+            echo -e "${YELLOW}[WARN] Falha ao instalar Entire. Rode manualmente: ${GREEN}bash linux/cli/install-entire.sh${NC}"
+    else
+        echo -e "${YELLOW}[SKIP] Entire não instalado. Rode manualmente: ${GREEN}bash linux/cli/install-entire.sh${NC}"
+    fi
+else
+    echo -e "${YELLOW}[WARN] Script do Entire não encontrado. Pulando.${NC}"
+fi
+
+# ============================================================
+# 12. Qdrant MCP (busca semântica de código/memória)
+# ============================================================
+echo -e "\n${CYAN}--- 12. Qdrant MCP (busca semântica) ---${NC}"
+if [[ -f "$REPO_DIR/linux/cli/install-qdrant-mcp.sh" ]]; then
+  if [[ -f "$HOME/.config/opencode/.env.mcp" ]]; then
+    read -p "Deseja registrar o MCP 'qdrant' no OpenCode? (s/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Ss]$ ]]; then
+      bash "$REPO_DIR/linux/cli/install-qdrant-mcp.sh" ||
+        echo -e "${YELLOW}[WARN] Falha ao registrar Qdrant. Rode manualmente: ${GREEN}bash linux/cli/install-qdrant-mcp.sh${NC}"
+    else
+      echo -e "${YELLOW}[SKIP] Qdrant MCP não registrado. Rode depois: ${GREEN}bash linux/cli/install-qdrant-mcp.sh${NC}"
+    fi
+  else
+    echo -e "${YELLOW}[SKIP] ~/.config/opencode/.env.mcp ausente. Copie de shared/mcp/qdrant/.env.example e rode o instalador.${NC}"
+  fi
+else
+  echo -e "${YELLOW}[WARN] Script do Qdrant não encontrado. Pulando.${NC}"
+fi
+
+# ============================================================
 # Finalização
 # ============================================================
 echo -e "\n${CYAN}====================================================${NC}"
@@ -196,4 +234,5 @@ echo -e "  2. Instale plugins tmux:${GREEN}tmux${NC} → ${GREEN}prefix + I${NC}
 echo -e "  3. Verifique docker:    ${GREEN}docker --version${NC}"
 echo -e "  4. Verifique git:       ${GREEN}git config --list${NC}"
 echo -e "  5. Verifique CLIs:      ${GREEN}bash linux/cli/top-clis.sh${NC} → ${GREEN}scan${NC}"
+echo -e "  6. Registre o Qdrant:   ${GREEN}bash linux/cli/install-qdrant-mcp.sh${NC} (chaves em ~/.config/opencode/.env.mcp)"
 echo -e ""

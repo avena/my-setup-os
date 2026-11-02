@@ -11,6 +11,7 @@ linux/
 ├── setup.sh                       # Script principal de bootstrap
 ├── cli/                           # Top 26 CLIs de IA/Coding
 │   ├── top-clis.sh                # Catálogo interativo
+│   ├── install-entire.sh          # Instala Entire CLI + plugin brain (checkpoints)
 │   └── README.md
 ├── containers/                    # Docker Engine + NVIDIA GPU
 │   ├── install-docker-wsl.sh
@@ -35,7 +36,7 @@ linux/
 
 ## Setup Unificado (`setup.sh`)
 
-O script `linux/setup.sh` é o ponto de entrada principal. Ele detecta automaticamente se está rodando no **WSL** ou **Linux Nativo** e executa 10 etapas sequenciais:
+O script `linux/setup.sh` é o ponto de entrada principal. Ele detecta automaticamente se está rodando no **WSL** ou **Linux Nativo** e executa 11 etapas sequenciais:
 
 ### Etapas do Setup
 
@@ -51,6 +52,7 @@ O script `linux/setup.sh` é o ponto de entrada principal. Ele detecta automatic
 | 8 | **Git Config** | Solicita nome/email se ainda com `TODO` no `.gitconfig` |
 | 9 | **TPM** | Instala Tmux Plugin Manager |
 | 10 | **Top 26 CLIs** | Instala CLIs de IA/Coding via `top-clis.sh` (interativo) |
+| 11 | **Entire CLI** | Instala o Entire CLI + plugin brain via `install-entire.sh` (checkpoints de sessões) |
 
 ### Execução
 
@@ -226,6 +228,41 @@ bash linux/cli/top-clis.sh
 
 ---
 
+## Entire CLI — Checkpoints de Sessões + Brain
+
+O [Entire](https://entire.com) é o git forge para colaboração agente-humano: publica as sessões dos
+coding agents junto aos commits (checkpoints) e constrói um *brain* consultável por repositório.
+Documentação completa: [entire.md](entire.md).
+
+```bash
+# Instalação (CLI + plugin brain)
+bash linux/cli/install-entire.sh
+
+# Login e habilitação de checkpoints
+entire login              # use --device em SSH/container
+entire enable             # dentro de qualquer repositório git
+
+# Brain
+entire brain setup        # índice local + backfill + watcher
+entire brain connect      # sincroniza com o brain hospedado da equipe
+```
+
+| Etapa | Comando | O que faz |
+|---|---|---|
+| 1. Instalar | `bash linux/cli/install-entire.sh` | CLI + plugin `brain` |
+| 2. Login | `entire login` | Vincula a conta da CLI |
+| 3. Habilitar | `entire enable` | Todo push passa a publicar checkpoints |
+| 4. Repo | `entire repo clone /et/<projeto>/<repo>` | Clone novo do forge Entire |
+| 4b. Repo | `entire repo remote add origin --override /et/<projeto>/<repo>` | Aponta clone existente |
+| 5. Brain | `entire plugin install brain` | Plugin de memória contínua |
+| 6. Brain | `entire brain setup` | Índice local + backfill + daemon |
+| 7. Brain | `entire brain connect` | Sincroniza com o brain hospedado |
+
+Consulta: `entire brain query "..."`, `entire brain brief <tarefa>`, `entire brain overview`.
+Segredos são detectados e redigidos antes de qualquer armazenamento; o brain é **local por padrão**.
+
+---
+
 ## Fontes
 
 ### Instaladas via `install-fonts.sh`
@@ -263,4 +300,15 @@ tmux -V
 
 # 4. Verificar CLIs
 bash linux/cli/top-clis.sh → scan
+
+# 5. Entire CLI (checkpoints de sessões + brain)
+bash linux/cli/install-entire.sh     # se ainda não rodou no setup
+entire login                          # --device em SSH/container
+entire enable                         # dentro de um repositório git
+entire plugin install brain           # memória contínua
+entire brain setup                    # índice local + backfill + watcher
+entire brain connect                  # sincroniza com o brain hospedado
+entire status                         # confere o estado no repositório
 ```
+
+Guia completo: [entire.md](entire.md).

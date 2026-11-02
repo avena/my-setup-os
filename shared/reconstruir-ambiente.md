@@ -71,6 +71,47 @@ skills-novo-projeto
 ### Pasta Shared do Projeto
 `/home/livre/my-setup-os/shared/` - use para armazenar configs compartilhadas
 
+### Entire CLI (checkpoints de sessões + brain)
+Instalar pelo script do projeto (CLI + plugin brain) e depois rodar o fluxo interativo:
+```bash
+bash /home/livre/my-setup-os/linux/cli/install-entire.sh
+
+entire login            # use --device em SSH/container
+entire enable           # dentro de qualquer repositório git
+entire plugin install brain
+entire brain setup      # índice local + backfill + daemon
+entire brain connect    # sincroniza com o brain hospedado da equipe
+```
+
+Duas formas de ligar o repositório ao Entire (troque `/et/<projeto>/<repo>` pelo seu):
+```bash
+# A) Espelho do GitHub — origin continua no GitHub, Entire recebe os checkpoints
+entire repo mirror add && entire repo remote add entire
+
+# B) Repositório nativo Entire (equivalente ao gh repo create)
+entire repo create <repo> --project <projeto> --visibility private
+entire repo remote add entire /et/<projeto>/<repo>
+
+# depois, em ambos:
+entire enable -y --agent opencode --checkpoint-push-remote entire
+git push entire main
+```
+
+Evite `entire repo remote add origin ... --override` se o `origin` já aponta para o GitHub: ele
+sobrescreve a URL. Detalhes: [docs/entire.md](../docs/entire.md).
+
+### Qdrant MCP (busca semântica de código)
+O Qdrant guarda vetores; quem gera o embedding é o 9Router (`/v1/embeddings`).
+```bash
+# 1. chaves em ~/.config/opencode/.env.mcp (modelo: shared/mcp/qdrant/.env.example)
+# 2. registrar o MCP no opencode.json
+bash /home/livre/my-setup-os/linux/cli/install-qdrant-mcp.sh
+# 3. reiniciar o OpenCode e testar qdrant-info
+```
+
+Qdrant local opcional: `docker run -d -p 6333:6333 qdrant/qdrant`.
+Detalhes (REST/Python, indexação em massa): [docs/qdrant.md](../docs/qdrant.md).
+
 ## O que não pôde ser feito (sem root)
 - `/srv/shared` - requer sudo para criar em /srv
 - Instalar pacotes via apt com sudo
@@ -84,3 +125,6 @@ skills-novo-projeto
 - [ ] skills mattpocock carregam
 - [ ] skill security-audit carrega (global e por projeto)
 - [ ] skills EGM (egm-*) carregam (global, plugin agy e por projeto)
+- [ ] `entire version` funciona e `entire auth status` está autenticado
+- [ ] `entire status` mostra checkpoints sincronizando no remote `entire`
+- [ ] MCP `qdrant` responde `qdrant-info` (collection `codebase`, 3072 dims)

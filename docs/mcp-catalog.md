@@ -97,15 +97,20 @@ Este documento cataloga todos os servidores MCP e Skills mapeados no `my-setup-o
 
 ### Blender MCP
 - **URL**: https://mcpservers.org/pt-BR/servers/blender-mcp
-- **Execução**:
+- **Execução** (perfil de **projeto**, `enabled: false` — ver [cad-gis-mcp-setup.md](cad-gis-mcp-setup.md)):
   ```json
   "blender": {
     "type": "local",
-    "command": ["uvx", "blender-mcp"],
-    "enabled": true
+    "command": ["/home/livre/.local/bin/mcp-for-blender", "--host", "172.22.112.1", "--port", "9876"],
+    "enabled": false,
+    "timeout": 30000
   }
   ```
-- **Requisitos**: Add-on `blender_mcp` instalado e ativo no Blender.
+  Não vai em `~/.config/opencode/opencode.json`: ativar com
+  `./scripts/add-cad-gis-mcp.sh <projeto>` ou pelo perfil `cad-gis-3d`.
+- **Instalação**: `uv tool install --force "git+https://github.com/ahujasid/mcp-for-blender"` — o pacote do PyPI está defasado (protocolo 7) e não fala com o add-on v1.8 (protocolo 15).
+- **Requisitos**: Add-on `MCP for Blender` v1.8 no Blender, com `host='0.0.0.0'` (patch no `blender_mcp.py`), `Allow Online Access` e regra de firewall na porta 9876. Desabilitar a extensão oficial da Blender Lab (conflito de porta).
+- **Setup completo (WSL ↔ Windows)**: [blender-mcp-setup.md](blender-mcp-setup.md)
 - **Como Usar**:
   > *"Analise a cena aberta no Blender e liste os objetos com maior contagem de polígonos que estejam fora do enquadramento da câmera."*
   > *"Renomeie os data-blocks de luzes da cena atual seguindo a convenção LGT-nome."*

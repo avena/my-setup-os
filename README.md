@@ -23,6 +23,11 @@ my-setup-os/
 ├── docs/                              # Documentation and references
 │   ├── fonts.md                       # Instalação de fontes para editores e terminais
 │   ├── top-clis.md                    # Catálogo de 26 CLIs de IA/Coding: instalação e uso
+│   ├── entire.md                      # Entire CLI: checkpoints de sessões de agentes + brain
+│   ├── qdrant.md                      # Qdrant + 9Router: busca semântica de código/memória (MCP)
+│   ├── blender-mcp-setup.md           # Blender MCP: OpenCode (WSL) -> Blender (Windows)
+│   ├── cad-gis-mcp-setup.md           # Blender+FreeCAD+QGIS MCP (por projeto): peças, casas, mapas
+│   ├── mcp-catalog.md                 # Catálogo de servidores MCP disponíveis
 │   ├── deploy-dreamhost.md            # Playbook de deploy incremental rsync/SSH para DreamHost
 │   └── references/                    # Curated references for dotfiles management
 │       └── README.md                  # Guide to dotfiles resources and best practices
@@ -33,8 +38,24 @@ my-setup-os/
 │   ├── instalar-skills-mattpocock.sh  # Sincroniza skills entre os 9 coding CLIs
 │   ├── inventario-instalado.md        # Inventário completo de ferramentas e skills
 │   ├── reconstruir-ambiente.md        # Guia de restauração do setup
+│   ├── setup-mcps.sh                  # Gerenciador de servidores MCP por perfil
+│   ├── mcp/qdrant/                    # MCP server Qdrant+9Router (mcp-server.py, .env.example)
+│   ├── templates/mcp/                 # Perfis de MCP prontos (mcp-web, mcp-backend, ...)
+│   │   ├── mcp-web.jsonc              # Perfil web (Chrome DevTools, Playwright, React...)
+│   │   ├── mcp-backend.jsonc          # Perfil backend (Neon, Supabase, ...)
+│   │   ├── mcp-productivity.jsonc     # Perfil produtividade (GitHub, Notion, ...)
+│   │   ├── mcp-scraping.jsonc         # Perfil scraping (Firecrawl, ...)
+│   │   ├── mcp-full.jsonc             # Todos os servidores catalogados
+│   │   ├── mcp-cad-gis-3d.jsonc       # Blender+FreeCAD+QGIS — SÓ POR PROJETO (enabled=false)
+│   │   └── .env.mcp.example           # Variáveis de ambiente esperadas pelos MCPs
 │   ├── templates/novo-projeto/        # Templates pré-configurados (skills-lock.json)
 │   └── templates/deploy/              # Automações de deploy (deploy-dreamhost.sh)
+│
+├── scripts/                           # Health-checks das integrações WSL <-> Windows
+│   ├── check-blender-mcp.sh           # Blender MCP + 9Router (handshake real)
+│   ├── check-cad-gis-mcp.sh           # FreeCAD XML-RPC + bridge do QGIS + config do opencode
+│   ├── add-cad-gis-mcp.sh             # Injeta o perfil cad-gis-3d no opencode.jsonc de um projeto
+│   └── qgis_mcp_server.py             # Cliente MCP (stdio) que fala com o bridge no QGIS
 │
 ├── windows/                           # Configurações específicas do Windows Host
 │   ├── fonts/                         # Instalação de fontes para Windows
@@ -47,6 +68,9 @@ my-setup-os/
 │   ├── scoop/                         # Gerenciador de pacotes Scoop
 │   │   ├── scoop-programs.json        # Lista de programas instalados
 │   │   └── README.md                  # Instruções do Scoop e UnigetiUI
+│   ├── cad-gis/                       # Ponte MCP dos apps CAD/GIS do Windows
+│   │   ├── qgis_mcp_bridge.py         # Socket JSON dentro do QGIS (0.0.0.0:9874)
+│   │   └── Allow-CadMcpFirewall.ps1   # Libera 9874/9875/9876 para o WSL
 │   ├── Set-PowerShell7AsDefault.ps1   # Configura PowerShell 7 como padrão
 │   └── README.md                      # Overview das configurações Windows
 │
@@ -54,6 +78,8 @@ my-setup-os/
     ├── cli/                           # Top CLIs Installer (26 CLIs IA/Coding)
     │   ├── top-clis-installer.sh      # Bootstrap: gera ~/top-clis.sh e executa
     │   ├── top-clis.sh                # Script principal do catálogo interativo
+    │   ├── install-entire.sh          # Instala Entire CLI + plugin brain (checkpoints de sessões)
+    │   ├── install-qdrant-mcp.sh      # Registra o MCP "qdrant" (busca semântica) no OpenCode
     │   └── README.md                  # Documentação do Top CLIs
     ├── fonts/                         # Instalação de fontes para Linux/macOS
     │   ├── install-fonts.sh           # Instalação via apt/dnf/pacman/Homebrew
@@ -73,6 +99,79 @@ my-setup-os/
 
 - **[Deploy DreamHost via Rsync](docs/deploy-dreamhost.md)**: Playbook de deploy incremental para hospedagem compartilhada (rsync sobre SSH, algoritmo delta, compressão em trânsito, dry-run e exclusões seguras).
 - **[Template `deploy-dreamhost.sh`](shared/templates/deploy/deploy-dreamhost.sh)**: Script bash parametrizado e reutilizável para sincronizar builds locais (WSL/Linux) à DreamHost.
+
+## CAD, GIS e Modelagem 3D/2D via MCP
+
+O mesmo padrão do Blender (OpenCode no WSL controlando o app no Windows por TCP) atende os outros
+dois softwares de engenharia da máquina. Guia completo: **[docs/cad-gis-mcp-setup.md](docs/cad-gis-mcp-setup.md)**.
+
+> **Política: por projeto, nunca global.** Blender, FreeCAD e QGIS ficam **fora** de
+> `~/.config/opencode/opencode.json`. Cada um abre processo local, disputa uma porta fixa e
+> segura o boot do OpenCode com timeout quando o app não está aberto. Entram só no projeto que
+> faz CAD/GIS/3D, via [`shared/templates/mcp/mcp-cad-gis-3d.jsonc`](shared/templates/mcp/mcp-cad-gis-3d.jsonc)
+> (todos com `"enabled": false`; ligue só o que o projeto usa).
+
+| MCP | App / porta | Para que serve na prática |
+|---|---|---|
+| **Blender** (`mcp-for-blender`) | Blender 5.2 · `9876` | Objetos 3D, vista explodida animada, materiais PBR, render de catálogo/manual |
+| **FreeCAD** (`uvx freecad-mcp`) | FreeCAD · `9875` | Peça mecânica real em B-Rep: esboço cotado, Pad/Pocket, chapa dobrada, furo com tolerância, STEP/IGES, DXF para laser, FEM (CalculiX) |
+| **QGIS** (`scripts/qgis_mcp_server.py` + `windows/cad-gis/qgis_mcp_bridge.py`) | QGIS 3.4x · `9874` | Editar mapa aberto via PyQGIS: buffer de APP, área em hectares, declividade, NDVI, layout de impressão, e **desenvolver plugins de geoprocessamento** rodando `processing.run()` |
+
+O que isso destrava, em concreto:
+
+- **Peças e conjuntos 3D (CAD paramétrico)** — o agente cria corpos no PartDesign com dimensões
+  reais, aplica furos/chanfros, confere por `get_view` e exporta `.step` para fabricação.
+- **Casas e construção** — paredes, aberturas e lajes a partir de um footprint; depois o STEP
+  entra no Blender para a apresentação animada.
+- **Mapas** — o agente lê as camadas do projeto aberto, roda algoritmos GDAL/GRASS/SAGA e
+  devolve o mapa renderizado para conferência visual.
+- **Tecnologia de geoprocessamento** — criar, testar e depurar plugin Processing (algoritmo,
+  `metadata.txt`, testes via `qgis_execute`) sem sair do chat.
+
+```bash
+./scripts/add-cad-gis-mcp.sh ~/projetos/minha-peca        # ativa no projeto (troca o IP do WSL sozinho)
+./scripts/check-cad-gis-mcp.sh ~/projetos/minha-peca/opencode.jsonc   # verifica global + projeto
+./scripts/check-cad-gis-mcp.sh                            # só o global (deve estar limpo)
+powershell -ExecutionPolicy Bypass -File windows\cad-gis\Allow-CadMcpFirewall.ps1   # admin
+```
+
+Status em 01/11/2026: Blender ok · **FreeCAD não instalado** · **QGIS com instalação quebrada**
+(sobraram 3 arquivos-stub em `Program Files\QGIS 3.44.10`; o perfil em `AppData\Roaming\QGIS` está
+intacto). Passo a passo de reinstalação no doc.
+
+## Entire CLI — Checkpoints de Sessões e Brain por Repositório
+
+O **Entire** é o git forge para colaboração agente-humano: guarda o *porquê* das mudanças (prompts,
+tool calls e decisões das sessões dos coding agents) em **checkpoints** presos aos commits, e
+transforma esse histórico em um **brain** consultável por repositório.
+
+Guia completo: **[docs/entire.md](docs/entire.md)** · Instalador: [`linux/cli/install-entire.sh`](linux/cli/install-entire.sh)
+
+```bash
+bash linux/cli/install-entire.sh    # CLI + plugin brain
+entire login                        # --device em SSH/container
+entire enable                       # dentro de qualquer repo git
+```
+
+| Etapa | Comando | O que faz |
+|---|---|---|
+| 1. Instalar | `curl -fsSL https://entire.com/install.sh \| bash` | Instala o binário em `~/.local/bin` |
+| 2. Login | `entire login` | Vincula a conta da CLI (device-code com `--device`) |
+| 3. Habilitar | `entire enable` | Todo push passa a publicar checkpoints |
+| 4. Codar/push | `git push` | O primeiro checkpoint aparece no painel |
+| 5. Repo | `entire repo clone /et/<projeto>/<repo>` | Clone novo do forge Entire |
+| 5b. Repo | `entire repo remote add origin --override /et/<projeto>/<repo>` | Aponta um clone existente |
+
+> O caminho `/et/avena/calculos-agronomicos` usado no guia é apenas um **exemplo**; troque por
+> `/et/<projeto>/<repo>` do seu time.
+| 6. Brain | `entire plugin install brain` | Instala o plugin de memória contínua |
+| 7. Brain | `entire brain setup` | Índice local + backfill + watcher em background |
+| 8. Brain | `entire brain connect` | Sincroniza as memórias com o brain hospedado da equipe |
+
+Checkpoints capturam as sessões dos agentes e as publicam no `git push`; o brain é **local por
+padrão** e só sincroniza depois de `entire brain connect`. Segredos são detectados e redigidos antes
+de qualquer armazenamento. Detalhes de flags, consultas (`brain query`, `brief`, `overview`) e
+troubleshooting em [docs/entire.md](docs/entire.md).
 
 ## Características Principais
 
@@ -260,6 +359,8 @@ O diretório `docs/` contém documentação completa do projeto:
 
 - **[top-clis.md](docs/top-clis.md)** - Catálogo de 26 CLIs de IA/Coding: instalação, uso e solução de problemas
 - **[fonts.md](docs/fonts.md)** - Instalação de fontes para editores e terminais
+- **[blender-mcp-setup.md](docs/blender-mcp-setup.md)** - Integração Blender (Windows) ↔ OpenCode (WSL) via MCP: setup, health-check e troubleshooting
+- **[cad-gis-mcp-setup.md](docs/cad-gis-mcp-setup.md)** - Blender + FreeCAD (CAD paramétrico) + QGIS (SIG) via MCP no WSL, com portas 9876/9875/9874, check de conectividade e troubleshooting
 - **[references/](docs/references/README.md)** - Coleção curada de referências e inspiração para gerenciamento de dotfiles, incluindo repositórios famosos, ferramentas e melhores práticas.
 
 ## Agradecimentos

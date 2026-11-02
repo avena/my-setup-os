@@ -34,12 +34,8 @@
       "enabled": true,
       "timeout": 15000
     },
-    "blender": {
-      "type": "local",
-      "command": ["uvx", "blender-mcp"],
-      "enabled": true,
-      "timeout": 20000
-    },
+    // Blender/FreeCAD/QGIS de proposito NAO entram aqui: sao perfil de PROJETO.
+    // Use shared/templates/mcp/mcp-cad-gis-3d.jsonc (docs/cad-gis-mcp-setup.md).
     "neon": {
       "type": "local",
       "command": ["npx", "-y", "@neondatabase/mcp-server-neon@latest"],

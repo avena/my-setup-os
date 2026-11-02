@@ -63,7 +63,7 @@ apply_profile() {
   local target="${2:-$OPENCODE_GLOBAL}"
 
   if [ -z "$profile" ]; then
-    echo "Uso: $0 apply <web|backend|scraping|productivity|full> [caminho_opencode.json]"
+    echo "Uso: $0 apply <web|backend|scraping|productivity|full|cad-gis-3d> [caminho_opencode.json]"
     exit 1
   fi
 
@@ -74,8 +74,18 @@ apply_profile() {
     scraping) profile_file="$TEMPLATES_DIR/mcp-scraping.jsonc" ;;
     productivity) profile_file="$TEMPLATES_DIR/mcp-productivity.jsonc" ;;
     full) profile_file="$TEMPLATES_DIR/mcp-full.jsonc" ;;
+    cad-gis-3d)
+      # Blender/FreeCAD/QGIS são por PROJETO: nunca aplicados na config global.
+      if [ -z "${2:-}" ] || [ "$target" = "$OPENCODE_GLOBAL" ]; then
+        echo "Erro: 'cad-gis-3d' é perfil de projeto e exige o caminho do opencode.jsonc do projeto." >&2
+        echo "  Exemplo: $0 apply cad-gis-3d ./opencode.jsonc" >&2
+        echo "  (na config global esses três servidores ficam de fora de propósito)" >&2
+        exit 1
+      fi
+      profile_file="$TEMPLATES_DIR/mcp-cad-gis-3d.jsonc"
+      ;;
     *)
-      echo "Perfil desconhecido: '$profile'. Opções: web, backend, scraping, productivity, full."
+      echo "Perfil desconhecido: '$profile'. Opções: web, backend, scraping, productivity, full, cad-gis-3d."
       exit 1
       ;;
   esac
@@ -121,6 +131,7 @@ list_profiles() {
   echo "  - scraping: Web crawling e buscas (Open Crawler, Google Search, HasData, Yahoo Finance)"
   echo "  - productivity: Tarefas, PRs e notas (GitHub, Notion, Todoist, Atlassian, Evernote, Obsidian, NotebookLM)"
   echo "  - full: Todos os servidores MCP catalogados"
+  echo "  - cad-gis-3d: Blender + FreeCAD + QGIS — SÓ POR PROJETO (exige caminho do opencode.jsonc do projeto)"
 }
 
 case "${1:-status}" in
