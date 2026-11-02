@@ -129,6 +129,23 @@ Para ver o destino eleito: `entire status` → `Checkpoints sync to: entire`.
 > a URL anterior — evite se já existe um remote de código. `checkpoint_push_remote` fica em
 > `.entire/settings.local.json` (local, não versionado).
 
+### 4b. Um comando para os clones novos
+
+Como `checkpoint_push_remote` só existe em `.entire/settings.local.json` (ignorado pelo git), todo
+clone novo perde essa configuração. O script abaixo refaz os quatro passos de forma idempotente e
+**nunca** toca no `origin`:
+
+```bash
+bash linux/cli/setup-entire-repo.sh --project avena --repo my-setup-os            # remote já existe
+bash linux/cli/setup-entire-repo.sh --project avena --repo my-setup-os --create   # cria no forge
+bash linux/cli/setup-entire-repo.sh --dry-run                                     # mostra sem executar
+```
+
+Ele checa login, adiciona o remote `entire` se faltar, roda
+`entire enable -y --agent opencode --checkpoint-push-remote entire` (idempotente — reexecutar
+mantém o destino) e faz `entire brain setup --no-backfill --no-daemon`. Ao final imprime
+`git remote -v`, `entire status` e avisa se o worktree está sujo (o seed do brain falha nesse caso).
+
 ### 5. As duas configurações possíveis
 
 Há dois jeitos de ligar um repositório ao Entire — escolha um por repositório:

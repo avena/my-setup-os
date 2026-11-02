@@ -79,6 +79,7 @@ my-setup-os/
     │   ├── top-clis-installer.sh      # Bootstrap: gera ~/top-clis.sh e executa
     │   ├── top-clis.sh                # Script principal do catálogo interativo
     │   ├── install-entire.sh          # Instala Entire CLI + plugin brain (checkpoints de sessões)
+    │   ├── setup-entire-repo.sh       # Liga um clone ao Entire (remote + enable + brain), idempotente
     │   ├── install-qdrant-mcp.sh      # Registra o MCP "qdrant" (busca semântica) no OpenCode
     │   └── README.md                  # Documentação do Top CLIs
     ├── fonts/                         # Instalação de fontes para Linux/macOS

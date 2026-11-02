@@ -8,6 +8,7 @@ Script para instalar e gerenciar **26 CLIs de IA/Coding** no Linux/WSL.
 |---|---|
 | `top-clis.sh` | Catálogo interativo — escaneia, instala e gerencia 26 CLIs |
 | `install-entire.sh` | Instala o Entire CLI + plugin brain (checkpoints de sessões de agentes) |
+| `setup-entire-repo.sh` | Liga um clone git ao Entire: remote `entire`, enable com `--checkpoint-push-remote`, brain local. Idempotente, nunca toca no `origin` |
 | `install-qdrant-mcp.sh` | Registra o MCP `qdrant` (busca semântica via 9Router) no OpenCode |
 
 ## Uso

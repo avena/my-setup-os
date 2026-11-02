@@ -100,6 +100,12 @@ git push entire main
 Evite `entire repo remote add origin ... --override` se o `origin` já aponta para o GitHub: ele
 sobrescreve a URL. Detalhes: [docs/entire.md](../docs/entire.md).
 
+Atalho idempotente para os clones novos (refaz remote + enable + brain, sem tocar no `origin`):
+```bash
+bash /home/livre/my-setup-os/linux/cli/setup-entire-repo.sh --project avena --repo my-setup-os
+```
+`--create` cria o repositório no forge; `--dry-run` só mostra os comandos.
+
 ### Qdrant MCP (busca semântica de código)
 O Qdrant guarda vetores; quem gera o embedding é o 9Router (`/v1/embeddings`).
 ```bash
