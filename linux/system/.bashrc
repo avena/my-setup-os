@@ -164,3 +164,6 @@ unset _qoder_dispatcher_entry _qoder_dispatcher_rest _qoder_dispatcher_tail _qod
 
 # Entire CLI: WSL sem keyring, guarda tokens em ~/.config/entire/tokens.json (0600)
 export ENTIRE_TOKEN_STORE=file
+
+# Entire CLI shell completion
+source <(entire completion bash)
