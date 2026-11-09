@@ -583,3 +583,150 @@ export const EntirePlugin: Plugin = async ({ directory }) => {
     },
   }
 }
+
+// ---------------------------------------------------------------------------
+// ponytail: adaptador OpenCode 2.x. NÃO é parte do arquivo gerado pelo
+// `entire enable` — este bloco vive depois do factory, então o gerador o
+// sobrescreve apenas quando roda de novo (nesse caso reaplique).
+//
+// O problema: o CLI 0.12.2 emite o contrato 1.x (um export nomeado cujo
+// factory devolve os hooks). O OpenCode 2.x descarta esse módulo com
+// "Plugin must export a default definition with an id and an effect or setup
+// function" — e o descarte é silencioso: `entire doctor` diz "hook config: OK",
+// mas nenhuma sessão nasce e nenhum checkpoint existe.
+//
+// O que muda no 2.x (medido neste host, não deduzido):
+//   - o host entrega `ctx` com `ctx.event.subscribe()`, `ctx.tool.hook()`,
+//     `ctx.session.hook()` e `ctx.location.directory`
+//   - eventos chegam como `{ type, location, data }`, não `{ type, properties }`
+//   - os nomes mudaram: não existe `message.updated`; o turno começa em
+//     `session.step.started` e o fim do turno é `session.step.ended`
+//
+// O adaptador reembrulha os eventos 2.x na forma 1.x e reaproveita o factory
+// inteiro — nenhum handler acima é reescrito, só o encanamento.
+// ---------------------------------------------------------------------------
+
+// Traduz um evento 2.x para a forma `{ type, properties }` que o factory 1.x
+// consome. Devolve null para o que não tem equivalente.
+function toV1Event(ev: any): { type: string; properties: any } | null {
+  const type = ev?.type
+  const d = ev?.data ?? {}
+  if (typeof type !== "string" || typeof d.sessionID !== "string") return null
+  const sessionID = d.sessionID
+
+  switch (type) {
+    // O 2.x manda session.created, mas o handler 1.x espera `info.id`.
+    case "session.created":
+      return {
+        type,
+        properties: {
+          info: { id: sessionID, directory: ev?.location?.directory ?? d.location ?? "" },
+        },
+      }
+
+    // Início de turno: no 1.x vinha de `message.updated` (role user) ou do
+    // primeiro `message.part.updated`. No 2.x é `session.step.started`, que
+    // já traz modelo e agente.
+    case "session.step.started":
+      return {
+        type: "message.updated",
+        properties: {
+          info: {
+            id: d.assistantMessageID,
+            sessionID,
+            role: "user",
+            modelID: d.model?.id ?? "",
+            time: { created: d.started },
+          },
+        },
+      }
+
+    // Fim de turno: o 1.x fechava em `session.status` com status idle.
+    case "session.step.ended":
+      return {
+        type: "session.status",
+        properties: { sessionID, status: { type: "idle" } },
+      }
+
+    // Erro de execução encerra a sessão nos dois contratos.
+    case "session.error":
+      return {
+        type,
+        properties: { sessionID, error: d.error },
+      }
+
+    default:
+      return null
+  }
+}
+
+async function setup(ctx: any) {
+  const directory = ctx?.location?.directory ?? ctx?.directory ?? process.cwd()
+  // Reaproveita o factory 1.x: o objeto de hooks devolvido é o mesmo.
+  const hooks: any = await (EntirePlugin as any)({ directory })
+  const stopFns: Array<() => void> = []
+
+  if (ctx?.event && typeof ctx.event.subscribe === "function") {
+    const ac = new AbortController()
+    stopFns.push(() => ac.abort())
+    ;(async () => {
+      for await (const ev of ctx.event.subscribe({ signal: ac.signal })) {
+        // O 2.x publica eventos de todos os workspaces abertos; sem este
+        // filtro uma sessão de outro repo abriria sessão aqui.
+        const dir = ev?.location?.directory
+        if (dir && dir !== directory) continue
+        const v1 = toV1Event(ev)
+        if (!v1) continue
+        try {
+          await hooks.event?.({ event: v1 })
+        } catch {
+          // um evento ruim não pode derrubar a assinatura
+        }
+      }
+    })().catch(() => {})
+  }
+
+  // Ferramentas: o 1.x recebia `tool.execute.before/after`; o 2.x expõe hooks
+  // com a mesma semântica. Repassamos para o plugin continuar rastreando
+  // subagentes (task) e edições.
+  if (ctx?.tool && typeof ctx.tool.hook === "function") {
+    await ctx.tool.hook("execute.before", async (e: any) => {
+      await hooks["tool.execute.before"]?.({
+        tool: e?.tool,
+        sessionID: e?.sessionID,
+        callID: e?.callID,
+        args: e?.input ?? {},
+      })
+    })
+    await ctx.tool.hook("execute.after", async (e: any) => {
+      if (e?.status && e.status !== "completed") return
+      await hooks["tool.execute.after"]?.(
+        { tool: e?.tool, sessionID: e?.sessionID, callID: e?.callID, args: e?.input ?? {} },
+        { metadata: e?.result?.metadata ?? {} },
+      )
+    })
+  }
+
+  // O contexto que o turn-start devolve (a injeção de orientação do Entire)
+  // chega ao modelo pelo system prompt do 2.x.
+  if (ctx?.session && typeof ctx.session.hook === "function") {
+    await ctx.session.hook("context", async (e: any) => {
+      if (!e || !Array.isArray(e.system)) return
+      const out = { system: [] as string[] }
+      await hooks["experimental.chat.system.transform"]?.({ sessionID: e.sessionID }, out)
+      for (const line of out.system) e.system.push({ type: "text", text: String(line) })
+    })
+  }
+
+  return () => {
+    for (const stop of stopFns) {
+      try {
+        stop()
+      } catch {
+        /* ignore */
+      }
+    }
+  }
+}
+
+export default { id: "entire", setup }
