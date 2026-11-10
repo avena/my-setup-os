@@ -85,6 +85,8 @@ Host $HOST_ALIAS
     HostName $HOST_NAME
     User $HOST_USER
     IdentityFile $KEY_PATH
+    # ponytail: default 60s ping para evitar timeout em hosts como DreamHost; mover para Match host se precisar de regras complexas
+    ServerAliveInterval 60
 EOF
 
     echo ""
