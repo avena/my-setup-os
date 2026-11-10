@@ -1,0 +1,67 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "github": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-github@latest"],
+      "environment": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "env:GITHUB_TOKEN"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "notion": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-notion@latest"],
+      "environment": {
+        "NOTION_API_KEY": "env:NOTION_API_KEY"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "todoist": {
+      "type": "local",
+      "command": ["npx", "-y", "@doist/todoist-mcp@latest"],
+      "environment": {
+        "TODOIST_API_TOKEN": "env:TODOIST_API_TOKEN"
+      },
+      "enabled": true,
+      "timeout": 15000
+    },
+    "atlassian": {
+      "type": "local",
+      "command": ["npx", "-y", "@atlassian/mcp-server@latest"],
+      "environment": {
+        "ATLASSIAN_HOST": "env:ATLASSIAN_HOST",
+        "ATLASSIAN_EMAIL": "env:ATLASSIAN_EMAIL",
+        "ATLASSIAN_API_TOKEN": "env:ATLASSIAN_API_TOKEN"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "evernote": {
+      "type": "local",
+      "command": ["npx", "-y", "evernote-mcp@latest"],
+      "environment": {
+        "EVERNOTE_ACCESS_TOKEN": "env:EVERNOTE_ACCESS_TOKEN"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "obsidian": {
+      "type": "local",
+      "command": ["npx", "-y", "obsidian-regulatory-mcp@latest"],
+      "environment": {
+        "OBSIDIAN_VAULT_PATH": "/home/livre/Documents/ObsidianVault"
+      },
+      "enabled": true,
+      "timeout": 15000
+    },
+    "notebooklm": {
+      "type": "local",
+      "command": ["uvx", "notebooklm-mcp"],
+      "enabled": true,
+      "timeout": 30000
+    }
+  }
+}

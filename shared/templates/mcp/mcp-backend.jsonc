@@ -1,0 +1,38 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "neon": {
+      "type": "local",
+      "command": ["npx", "-y", "@neondatabase/mcp-server-neon@latest"],
+      "environment": {
+        "NEON_API_KEY": "env:NEON_API_KEY"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "mysql": {
+      "type": "local",
+      "command": ["npx", "-y", "@benborla/mcp-server-mysql@latest"],
+      "environment": {
+        "MYSQL_HOST": "127.0.0.1",
+        "MYSQL_USER": "env:MYSQL_USER",
+        "MYSQL_PASSWORD": "env:MYSQL_PASSWORD",
+        "MYSQL_DATABASE": "env:MYSQL_DATABASE"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "laravel-codebase": {
+      "type": "local",
+      "command": ["npx", "-y", "laravel-codebase-mcp@latest"],
+      "enabled": true,
+      "timeout": 20000
+    },
+    "laravel-companion": {
+      "type": "local",
+      "command": ["npx", "-y", "laravel-mcp-companion@latest"],
+      "enabled": true,
+      "timeout": 20000
+    }
+  }
+}

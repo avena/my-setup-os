@@ -1,0 +1,35 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "open-crawler": {
+      "type": "local",
+      "command": ["npx", "-y", "open-crawler-mcp@latest"],
+      "enabled": true,
+      "timeout": 30000
+    },
+    "google-search": {
+      "type": "local",
+      "command": ["npx", "-y", "@crawlerdata/google-search-mcp@latest"],
+      "environment": {
+        "SERP_API_KEY": "env:SERP_API_KEY"
+      },
+      "enabled": true,
+      "timeout": 20000
+    },
+    "hasdata-scraping": {
+      "type": "local",
+      "command": ["npx", "-y", "@hasdata/mcp-server@latest"],
+      "environment": {
+        "HASDATA_API_KEY": "env:HASDATA_API_KEY"
+      },
+      "enabled": true,
+      "timeout": 30000
+    },
+    "yahoo-finance": {
+      "type": "local",
+      "command": ["uvx", "mcp-server-yahoo-finance"],
+      "enabled": true,
+      "timeout": 20000
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  // ============================================================================
+  // mcp-cad-gis-3d.jsonc — PERFIL DE PROJETO (não vai para a config global)
+  // ============================================================================
+  // Blender, FreeCAD e QGIS ficam FORA de ~/.config/opencode/opencode.json.
+  // Estes três só entram em projetos que realmente fazem CAD/GIS/3D, porque:
+  //   - cada um abre um processo local e disputa uma porta fixa no Windows;
+  //   - sem o app aberto, o boot do OpenCode espera timeout de conexão;
+  //   - Blender/FreeCAD/QGIS não são úteis em projeto de site, API ou dados.
+  //
+  // Como ativar em um projeto (qualquer uma das formas):
+  //   1. ./shared/setup-mcps.sh apply cad-gis-3d ./opencode.jsonc
+  //   2. ./scripts/add-cad-gis-mcp.sh /caminho/do/projeto    (faz o merge e ajusta o IP)
+  //   3. Copiar o bloco "mcp" abaixo para o opencode.jsonc do projeto.
+  //
+  // Regra de convivência: o opencode.jsonc do projeto faz merge com o global
+  // (chave a chave), então NÃO é preciso repetir os MCPs gerais aqui — só os três.
+  //
+  // Todos começam com "enabled": false. Ligue apenas o que o projeto usa,
+  // depois de o app estar aberto e o add-on escutando em 0.0.0.0.
+  //
+  // ⚠ 172.22.112.1 é o gateway do WSL (Windows host) e MUDA a cada reboot.
+  //   Descubra o atual com: ip route show default | awk '{print $3}'
+  //   O add-cad-gis-mcp.sh substitui isso automaticamente.
+  // ============================================================================
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    // -------------------------------------------------------------- BLENDER --
+    // Add-on "MCP for Blender" v1.8 no painel N > MCP Blender > Start MCP Server.
+    // Instalação: uv tool install --force "git+https://github.com/ahujasid/mcp-for-blender"
+    // Doc: docs/blender-mcp-setup.md
+    "blender": {
+      "type": "local",
+      "command": [
+        "/home/livre/.local/bin/mcp-for-blender",
+        "--host",
+        "172.22.112.1",
+        "--port",
+        "9876"
+      ],
+      "enabled": false,
+      "timeout": 30000
+    },
+
+    // --------------------------------------------------------------- FREECAD --
+    // Add-on FreeCADMCP (Workbench MCP) escutando em 0.0.0.0:9875.
+    // Não existe --port: a porta é fixa no add-on, só --host é configurável.
+    // `--only-text-feedback` evita screenshots automáticos (economiza tokens).
+    // Doc: docs/cad-gis-mcp-setup.md
+    "freecad": {
+      "type": "local",
+      "command": ["uvx", "freecad-mcp", "--host", "172.22.112.1"],
+      "environment": {
+        "FREECAD_MCP_TOKEN": "env:FREECAD_MCP_TOKEN"
+      },
+      "enabled": false,
+      "timeout": 120000
+    },
+
+    // ------------------------------------------------------------------ QGIS --
+    // Bridge JSON dentro do QGIS (0.0.0.0:9874) + cliente stdio deste repo.
+    // `mcp[cli]<2` é obrigatório: o SDK 2.x renomeou FastMCP -> MCPServer.
+    // Doc: docs/cad-gis-mcp-setup.md
+    "qgis": {
+      "type": "local",
+      "command": [
+        "uv",
+        "run",
+        "--quiet",
+        "--with",
+        "mcp[cli]<2",
+        "python3",
+        "/home/livre/my-setup-os/scripts/qgis_mcp_server.py"
+      ],
+      "environment": {
+        "QGIS_MCP_TOKEN": "env:QGIS_MCP_TOKEN"
+      },
+      "enabled": false,
+      "timeout": 120000
+    }
+  }
+}

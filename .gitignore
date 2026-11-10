@@ -16,3 +16,7 @@ cookies.txt
 # SSH / GPG chaves privadas
 .ssh/id_*
 .ssh/*_*
+
+# Bytecode Python
+__pycache__/
+*.pyc
