@@ -304,4 +304,23 @@ Copiadas de: https://github.com/mattpocock/skills
 
 ---
 
+## 13. Skills de Documentos (Adicionado em 2026-11-16)
+
+Fontes registradas em `shared/repositorios-de-skills.md`. Instaladas em `~/.agents/skills/` e linkadas em todos os 13 CLIs.
+
+| Skill | Origem | Instalação | Precisa de |
+|---|---|---|---|
+| `docx` | github.com/anthropics/skills → `skills/docx` (via OpxSkills) | clone esparso + cópia | `docx` npm global, `pandoc`, `soffice`, `pdftoppm` |
+| `md-to-docx` | `openclaw/skills/md-to-docx` (via SkillHub/EverMe) | `evercli skill install` | `python-docx` |
+| `word-documents` | `agent0ai/agent-zero/word-documents` (via SkillHub/EverMe) | `evercli skill install` | — |
+
+- **Repositórios de referência**: https://evermind.ai/skillhub · https://www.opxskills.com/
+- **Script de reinstalação**: `bash shared/instalar-skills-documentos.sh`
+- **CLIs linkadas**: opencode, codebuddy, kilo, antigravity, copilot, claude, codex, gemini, qwen, openclaw, cline, cursor, continue
+- **Patch local**: `shared/patch-md-to-docx.md` — corrige texto formatado duplicado e adiciona nível de tópico aos títulos. Reaplicar após update da skill.
+- **Pendente**: LibreOffice (`soffice`) não instalado — sem validação visual/PDF e sem conversão de templates `.doc`
+- **Testado**: geração de `.docx` via `md-to-docx` e via `docx` (docx-js) em CodeBuddy e OpenCode
+
+---
+
 *Este arquivo pode ser usado para reconstruir o ambiente em novas instalações/WSL/containers*
