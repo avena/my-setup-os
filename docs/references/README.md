@@ -4,6 +4,8 @@ This directory contains curated references and inspiration for managing your dot
 
 ## Table of Contents
 
+- [Projetos & Ferramentas Avaliadas (AI & Dev)](./projetos-e-ferramentas.md)
+- [Flashcards: Templates & Arquitetura](./flashcards/README.md)
 - [Famous Dotfiles Repositories](#famous-dotfiles-repositories)
 - [Dotfiles Management Tools](#dotfiles-management-tools)
 - [Terminal & Shell Configuration](#terminal--shell-configuration)
@@ -59,6 +61,10 @@ This directory contains curated references and inspiration for managing your dot
   - Configuration reload binding (<prefix> r)
 
 ## Additional Resources
+
+### Flashcards Architecture & Templates
+- **Path**: [flashcards/README.md](./flashcards/README.md)
+- **Description**: Reusable 3D-flip flashcard template, L1/L2/L3 pedagogy, and reference catalog for study modules across projects.
 
 ### Dotfiles Topic on GitHub
 - **URL**: https://github.com/topics/dotfiles

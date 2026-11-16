@@ -30,7 +30,14 @@ my-setup-os/
 │   ├── mcp-catalog.md                 # Catálogo de servidores MCP disponíveis
 │   ├── deploy-dreamhost.md            # Playbook de deploy incremental rsync/SSH para DreamHost
 │   └── references/                    # Curated references for dotfiles management
-│       └── README.md                  # Guide to dotfiles resources and best practices
+│       ├── README.md                  # Guide to dotfiles resources and best practices
+│       ├── projetos-e-ferramentas.md  # Catálogo de 16 projetos de IA & Dev Tools avaliados
+│       └── flashcards/                # Guia de arquitetura e templates de flashcards
+├── projetos/                          # Automações de containers (WSL ext4 / Docker / Finch)
+│   ├── crawlseo/                      # Setup CrawlSEO (Next.js + Postgres) - Porta 3000
+│   ├── mission-control/               # Setup Mission Control (Next.js + SQLite) - Porta 3001
+│   ├── open-notebook/                 # Setup Open Notebook (Next.js + SurrealDB) - Portas 8502/5055
+│   └── README.md                      # Diretrizes de containers, portas e filesystem
 ├── shared/                            # Configurações cross-platform
 │   ├── .gitconfig                     # Configuração do Git (válida para todos)
 │   ├── README.md                      # Explicação das configurações compartilhadas
@@ -362,7 +369,9 @@ O diretório `docs/` contém documentação completa do projeto:
 - **[fonts.md](docs/fonts.md)** - Instalação de fontes para editores e terminais
 - **[blender-mcp-setup.md](docs/blender-mcp-setup.md)** - Integração Blender (Windows) ↔ OpenCode (WSL) via MCP: setup, health-check e troubleshooting
 - **[cad-gis-mcp-setup.md](docs/cad-gis-mcp-setup.md)** - Blender + FreeCAD (CAD paramétrico) + QGIS (SIG) via MCP no WSL, com portas 9876/9875/9874, check de conectividade e troubleshooting
-- **[references/](docs/references/README.md)** - Coleção curada de referências e inspiração para gerenciamento de dotfiles, incluindo repositórios famosos, ferramentas e melhores práticas.
+- **[references/](docs/references/README.md)** - Coleção curada de referências para dotfiles, projetos e ferramentas avaliadas e templates de flashcards
+- **[projetos-e-ferramentas.md](docs/references/projetos-e-ferramentas.md)** - Catálogo de 16 projetos e ferramentas de IA & Dev avaliados (instalação, container ou registro)
+- **[projetos/](projetos/README.md)** - Automações de containers no WSL nativo: CrawlSEO (3000), Mission Control (3001) e Open Notebook (8502/5055)
 
 ## Agradecimentos
 

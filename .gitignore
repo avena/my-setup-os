@@ -20,3 +20,11 @@ cookies.txt
 # Bytecode Python
 __pycache__/
 *.pyc
+
+# Artefatos de runtime dos setups wslc (projetos/*/setup-*.ps1)
+# O `up` clona o repositorio do projeto e grava estado local; nada disso
+# deve ir para o git.
+projetos/*/repo/
+projetos/*/wslc-data/
+projetos/*/.wslc-state.json
+projetos/*/logs/*.log
