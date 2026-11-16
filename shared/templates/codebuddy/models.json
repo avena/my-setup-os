@@ -1,0 +1,613 @@
+{
+  "models": [
+    {
+      "id": "nvidia/nvidia/nemotron-3-ultra-550b-a55b",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "nvidia/moonshotai/kimi-k3_1-pro",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "nvidia/mistralai/mistral-large-4-1t-a52b",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "nvidia/z-ai/glm-5-3-flash",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "nvidia/minimaxai/minimax-m3.1-flash",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "nvidia/poolside/laguna-xs-2.1",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "nvidia/stepfun-ai/step-5-preview",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "nvidia/nvidia/nemotron-3.5-lightning-30b-a3b",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "nvidia/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "nvidia/nvidia/nemotron-3.5-bolt-e4b",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "nvidia/google/gemma-4-31b-it",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "nvidia/meta/muse-glimmer-30b",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "nvidia/meta/llama-3.2-90b-vision-instruct",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "nvidia/openai/gpt-oss-20b",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "openrouter/recursive/flint-v1.0:free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "openrouter/nvidia/nemotron-3-ultra-550b-a55b:free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "openrouter/dots-studio/dots-3-note-preview:free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "openrouter/nvidia/nemotron-3.5-super-vl:free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "openrouter/nvidia/nemotron-3.5-lightning:free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "openrouter/cohere/north-mini-code:free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "openrouter/minimax/minimax-m3.1-flash:floor",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "openrouter/deepseek/deepseek-v4.1-flash:floor",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "openrouter/deepseek/deepseek-v4.1-flash:relace",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "openrouter/deepseek/deepseek-v4.1-flash-1017:floor",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "openrouter/openrouter/free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "openrouter/xiaomi/mimo-v2.6-flash:floor",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "openrouter/z-ai/glm-5.3-flash:floor",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "cbai/minimax-m3",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "cbai/kimi-k2.6",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "cbai/kimi-k2.5",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "cbai/kimi-k2.7",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "cbai/glm-5.2",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "cbai/glm-5v-turbo",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "cbai/deepseek-v4.1-flash",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "cbai/glm-5.1",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "oc/nemotron-3.5-super-vl-free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "oc/nemotron-3.5-lightning-free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "oc/glm-5.3-flash-free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "oc/mimo-v2.6-flash-free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "oc/deepseek-v4.1-flash-free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "oc/beam-free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "oc/big-pickle",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "oc/flint-40b-free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "oc/iceman-free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "oc/inkling-2-small-free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "oc/longcat-2.5-free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "oc/minimax-m3.1-flash-free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "kc/nvidia/nemotron-3-ultra-550b-a55b:free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "kc/nvidia/nemotron-3.5-super-vl:free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "kc/openrouter/free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "kc/dots-studio/dots-3-note-preview:free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "kc/nvidia/nemotron-3.5-lightning:free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "kc/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "kc/kilo-auto/free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "kc/cohere/north-mini-code:free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "kc/reflection/beam-free",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "kc/stealth/glyph-cluster",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "cl/cline-free/solar-mini4",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "mmg/MiniMax-M3.1-Flash",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "mmg/MiniMax-M3.1-Flash-Preview",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "mmg/MiniMax-M3",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 128000
+    },
+    {
+      "id": "alib/gpt-4o",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/qwen3.7-max",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/qwen3.7-plus",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/qwen3.6-flash",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/glm-5.2",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/deepseek-v4-pro",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/wan2.7-image",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/wan2.7-image-pro",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/qwen-audio-3.0-tts-plus",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/deepseek-v4-flash-0731",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/qwen3.8-max",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/qwen-audio-3.0-realtime-plus",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/deepseek-v4-pro-0813",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/qwen3.8-flash",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/deepseek-v4.1-flash",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/glm-5.3",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/auto",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/wan3.0-video",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/deepseek-v4.1-flash-1017",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/qwen-image-3.0-pro",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/qwen-audio-3.0-asr-flash",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/qwen4-max-preview",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    },
+    {
+      "id": "alib/qwen4-max",
+      "name": "9router",
+      "url": "http://127.0.0.1:20128/v1/chat/completions",
+      "apiKey": "sk-12e1307bdc90c312-hpj8m3-36c8b677",
+      "maxInputTokens": 1000000
+    }
+  ]
+}

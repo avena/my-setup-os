@@ -367,6 +367,7 @@ O diretório `docs/` contém documentação completa do projeto:
 
 - **[top-clis.md](docs/top-clis.md)** - Catálogo de 26 CLIs de IA/Coding: instalação, uso e solução de problemas
 - **[fonts.md](docs/fonts.md)** - Instalação de fontes para editores e terminais
+- **[codebuddy-models.md](docs/codebuddy-models.md)** - Modelos customizados do CodeBuddy (`~/.codebuddy/models.json`) via 9Router: 87 modelos, prefixes por provedor e Alibaba Token Plan
 - **[blender-mcp-setup.md](docs/blender-mcp-setup.md)** - Integração Blender (Windows) ↔ OpenCode (WSL) via MCP: setup, health-check e troubleshooting
 - **[cad-gis-mcp-setup.md](docs/cad-gis-mcp-setup.md)** - Blender + FreeCAD (CAD paramétrico) + QGIS (SIG) via MCP no WSL, com portas 9876/9875/9874, check de conectividade e troubleshooting
 - **[references/](docs/references/README.md)** - Coleção curada de referências para dotfiles, projetos e ferramentas avaliadas e templates de flashcards

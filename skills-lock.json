@@ -1,53 +1,59 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
+    "design-taste-frontend": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/taste-skill/SKILL.md",
+      "computedHash": "b10eab0a9684cd09cf34c31ef04a3bf530a5f4404422f9c520d42372d670c7fc"
+    },
     "egm-bootstrap": {
       "source": "google/elephant-goldfish-model",
       "sourceType": "github",
       "skillPath": "skills/egm-bootstrap/SKILL.md",
-      "computedHash": "d32f760e2fc4c82607e76d2edf8b626a4a5b280e9a3640a9544f3c2ce6f1c8c3"
+      "computedHash": "2375951417ade764bebba2a2cf7a450d60a8b6669de1277c74435784ed1782fe"
     },
     "egm-brainstorm": {
       "source": "google/elephant-goldfish-model",
       "sourceType": "github",
       "skillPath": "skills/egm-brainstorm/SKILL.md",
-      "computedHash": "56db1ec73b04de3825d1e075262138f0d66763e7ab82f9f67cda2c4ed9b0cf4b"
+      "computedHash": "62174834484557c76800eaa0e50051fa71b76ec06d86b0b62a6217949aba9c08"
     },
     "egm-draft": {
       "source": "google/elephant-goldfish-model",
       "sourceType": "github",
       "skillPath": "skills/egm-draft/SKILL.md",
-      "computedHash": "c719c13448fa72609b2a87585a1d2cbdf52027d9d944e4f3ea2009fff5cd18ff"
+      "computedHash": "bc9b1b4501db6fc1f3d060b151e91ef882567dfbe79139171ec3281bf4c791ad"
     },
     "egm-drift-report": {
       "source": "google/elephant-goldfish-model",
       "sourceType": "github",
       "skillPath": "skills/egm-drift-report/SKILL.md",
-      "computedHash": "60acfd354ef952f4ccc2dc3d93ef01514b083802dc5dcf809fe405faa045569e"
+      "computedHash": "bfd4486d437704941cb6b5957de03f3ed1ab4c76d6d2eb48436382ed811cbd18"
     },
     "egm-resolve": {
       "source": "google/elephant-goldfish-model",
       "sourceType": "github",
       "skillPath": "skills/egm-resolve/SKILL.md",
-      "computedHash": "c3459efc56ae95cf814fd5dcb3c1b4c0ccd91b465614ff39249f4047a6029833"
+      "computedHash": "03fd700d65d338331ba552e0f7a54c145576e30f2e450567030c1aedcabeaa47"
     },
     "egm-review": {
       "source": "google/elephant-goldfish-model",
       "sourceType": "github",
       "skillPath": "skills/egm-review/SKILL.md",
-      "computedHash": "57b560df174e8cee869944a3941ddff3f8a110e7f7b5ed0e130120413569b0c4"
+      "computedHash": "96c1d1a154eea8fd4ff49da9160c0776bedcc1794f8fc72c492ac7caa86fa704"
     },
     "egm-review-loop": {
       "source": "google/elephant-goldfish-model",
       "sourceType": "github",
       "skillPath": "skills/egm-review-loop/SKILL.md",
-      "computedHash": "2053d524df95424436389ba5b7a9485b08f49027ad03d9e2bd5400208845b450"
+      "computedHash": "aa65481b93c76c8df40336c5d7ca9cb6cb5517e8e090700f127ee4b1b2aec065"
     },
     "security-audit": {
       "source": "cloudflare/security-audit-skill",
       "sourceType": "github",
       "skillPath": "skills/security-audit/SKILL.md",
-      "computedHash": "98b97aad2873b3b9a8e064007c25e7827b493ba27fda8bfbdb41dab586767973"
+      "computedHash": "8513eb3b2c39b8d05ef4f47b32ef4d18280b93a5efb91d8df6272f7435034af5"
     }
   }
 }
