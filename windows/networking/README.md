@@ -9,6 +9,7 @@ Esta pasta contém scripts PowerShell para gerenciamento de rede no Windows, esp
 - `check_nat_install.ps1`: Verifica se a função de NAT está instalada
 - `Configurar-NAT-Rede50.ps1`: Configura NAT para a rede 50.x.x.x
 - `forward-ssh.ps1`: Configura encaminhamento de porta SSH
+- `forward-9router.ps1`: Recria o portproxy `127.0.0.1:20128` → `<IP do WSL>:20128` do gateway 9Router (usado pelo CodeBuddy no Windows); rode de novo após reboot do WSL
 - `nat-duas-redes.ps1`: Gerenciamento de NAT para duas redes
 - `nat-manager.ps1`: Gerenciador de NAT (interface para configurações)
 - `nat-rede137.ps1`: Configura NAT para a rede 137.x.x.x

@@ -89,6 +89,34 @@ print(len(m), c.Counter(x['id'].split('/')[0] for x in m), c.Counter(x['url'] fo
 cp shared/templates/codebuddy/models.json ~/.codebuddy/models.json
 ```
 
+### Windows (`%USERPROFILE%\.codebuddy\models.json`)
+
+O arquivo é o **mesmo** do Linux (87 modelos, todos em `http://127.0.0.1:20128`).
+A ponte até o gateway roda no WSL é um **portproxy** do Windows:
+
+```text
+CodeBuddy (Windows) → 127.0.0.1:20128 → portproxy → <IP do WSL>:20128 → 9Router
+```
+
+O IP do WSL muda a cada reboot, então o portproxy precisa ser recriado:
+
+```powershell
+# PowerShell como Administrador
+cd windows\networking
+.\forward-9router.ps1          # descobre o IP, recria o portproxy e testa /v1/models
+```
+
+Como escuta em `127.0.0.1` (loopback), não precisa de regra de firewall no Windows.
+
+```powershell
+# Copiar a versão versionada para o perfil do Windows
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.codebuddy" | Out-Null
+Copy-Item shared\templates\codebuddy\models.json "$env:USERPROFILE\.codebuddy\models.json" -Force
+```
+
+> O `%USERPROFILE%\.codebuddy\models-README.txt` no Windows documenta o mesmo fluxo
+> (portproxy, teste, firewall) para consulta sem o repo à mão.
+
 **Adicionar um modelo:** nova entrada com `id = <prefixo>/<modelo>`, `url` e `apiKey` do gateway.
 O prefixo precisa existir como conexão no 9Router; para um provedor novo, registre a conexão
 openai-compatible lá (definindo `prefix` e `baseUrl`) antes de adicionar entradas aqui.

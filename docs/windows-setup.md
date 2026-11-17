@@ -19,6 +19,7 @@ windows/
 │   ├── check_nat_install.ps1           # Verifica NAT
 │   ├── Configurar-NAT-Rede50.ps1       # NAT rede 50.x.x.x
 │   ├── forward-ssh.ps1                 # SSH port forwarding
+│   ├── forward-9router.ps1             # Portproxy 127.0.0.1:20128 → IP do WSL (9Router)
 │   ├── nat-duas-redes.ps1              # NAT duas redes
 │   ├── nat-manager.ps1                 # Gerenciador de NAT
 │   ├── nat-rede137.ps1                 # NAT rede 137.x.x.x
@@ -166,6 +167,7 @@ Scripts PowerShell para configurar redes customizadas, especialmente úteis para
 | `nat-duas-redes.ps1` | Gerencia NAT para duas redes |
 | `nat-manager.ps1` | Interface gerenciadora de NAT |
 | `forward-ssh.ps1` | Configura SSH port forwarding |
+| `forward-9router.ps1` | Recria o portproxy `127.0.0.1:20128` → IP do WSL (gateway 9Router usado pelo CodeBuddy) |
 
 ### Execução
 
